@@ -87,5 +87,6 @@ lint/tmp/
 # lint/reports/
 /B.txt
 misc.xml
+compiler.xml
 
 .idea/
