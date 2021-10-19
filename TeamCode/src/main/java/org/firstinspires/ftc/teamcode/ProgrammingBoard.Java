@@ -25,7 +25,7 @@ public class ProgrammingBoard extends OpMode {
     Large = hardwareMap.dcMotor.get("LM"); //port 3
     Small = hardwareMap.dcMotor.get("SM"); //port 0
     Rev = hardwareMap.dcMotor.get("HM"); //port 2
-    Pass = hardwareMap.servo.get("S"); // mdeium port 3
+    Pass = hardwareMap.servo.get("S"); // medium port 3
     RubberDuck = hardwareMap.colorSensor.get("RD"); //small port 0
     }
 
