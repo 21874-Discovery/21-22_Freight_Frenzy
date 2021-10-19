@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 import static android.os.SystemClock.sleep;
 
@@ -33,5 +34,13 @@ public class FY21ProgramBoard2 extends OpMode {
             sleep(1000);
             Large.setPower(0);
         }
+        if (gamepad1.left_bumper) {
+            Double FlickPosition = (0.8);
+            FlickPosition = Range.clip(FlickPosition,0,1);
+            Pass.setPosition(FlickPosition);
+            telemetry.addData("Flick",FlickPosition);
+            telemetry.update();
+        }
     }
 }
+
