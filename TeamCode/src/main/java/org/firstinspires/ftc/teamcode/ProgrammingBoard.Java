@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import static android.os.SystemClock.sleep;
 @TeleOp(name = "{ProgrammingBoard_Code", group = "team")
-public class FY21ProgramBoard extends OpMode {
+public class ProgrammingBoard extends OpMode {
 
     //define motors and stuff
     DcMotor Large;
