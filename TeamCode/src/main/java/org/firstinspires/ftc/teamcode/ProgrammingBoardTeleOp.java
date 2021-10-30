@@ -32,22 +32,22 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            if (gamepad1.dpad_up) {
+            if (gamepad1.x=true) {
                 Large.setPower(0.5);
                 sleep(1000);
                 Large.setPower(0);
             }
-            if (gamepad1.y) {
+            if (gamepad1.y=true) {
                 Pass.setPosition(90);
                 sleep(1000);
                 Pass.setPosition(0);
             }
-            if (gamepad1.b) {
+            if (gamepad1.b=true) {
                 Rev.setPower(0.5);
                 sleep(1000);
                 Rev.setPower(0);
             }
-            if (gamepad1.a) {
+            if (gamepad1.a=true) {
                 Small.setPower(0.5);
                 sleep(1000);
                 Small.setPower(0);
