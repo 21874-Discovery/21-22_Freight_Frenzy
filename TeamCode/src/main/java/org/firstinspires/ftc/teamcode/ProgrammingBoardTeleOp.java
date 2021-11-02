@@ -23,11 +23,11 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         //hardware maps
-        Large = hardwareMap.dcMotor.get("LM"); //port 3
-        Small = hardwareMap.dcMotor.get("SM"); //port 0
-        Rev = hardwareMap.dcMotor.get("HM"); //port 2
-        Pass = hardwareMap.servo.get("S"); // medium port 3
-        RubberDuck = hardwareMap.colorSensor.get("RD"); //small port 0
+            Large = hardwareMap.dcMotor.get("LM"); //port 3
+            Small = hardwareMap.dcMotor.get("SM"); //port 0
+            Rev = hardwareMap.dcMotor.get("HM"); //port 2
+            Pass = hardwareMap.servo.get("S"); // medium port 3
+            RubberDuck = hardwareMap.colorSensor.get("RD"); //small port 0
 
         waitForStart();
 
