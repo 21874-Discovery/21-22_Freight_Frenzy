@@ -5,12 +5,41 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.AnalogInput;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import static android.os.SystemClock.sleep;
 
 @TeleOp(name = "programming board TeleOp", group = "default")
 public class ProgrammingBoardTeleOp extends LinearOpMode {
+    private DigitalChannel touchSensor;
+    private DcMotor motor;
+    private double ticksPerRotation;
+    private Servo servo;
+    private AnalogInput pot;
+    private ColorSensor colorSensor;
+    private DistanceSensor distanceSensor;
+
+    public void init(HardwareMap hwMap) {
+        touchSensor = hwMap.get(DigitalChannel.class, "touch_sensor");
+        touchSensor.setMode(DigitalChannel.Mode.INPUT);
+        motor = hwMap.get(DcMotor.class, "motor");
+        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ticksPerRotation = motor.getMotorType().getTicksPerRev();
+        servo = hwMap.get(Servo.class, "servo");
+        pot = hwMap.get(AnalogInput.class, "pot");
+
+        colorSensor = hwMap.get(ColorSensor.class, "sensor_color_distance");
+        distanceSensor = hwMap.get(DistanceSensor.class, "sensor_color_distance");
+    }
+    public boolean isTouchSensorPressed() {return!touchSensor.getState();
+    }
+    public void setMotorSpeed(double speed) {
+        motor.setPower(speed);
+    }
 
     //define motors and stuff
     DcMotor Large;
@@ -53,5 +82,6 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
                 Small.setPower(0);
             }
         }
+
     }
 }
