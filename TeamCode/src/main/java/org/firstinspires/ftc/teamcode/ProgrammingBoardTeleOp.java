@@ -33,7 +33,7 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
 
         while (opModeIsActive()) {
             if (gamepad1.x) {
-                Large.setPower(0.5);
+                Large.setPower(-1.0);
                 sleep(1000);
                 Large.setPower(0);
             }
