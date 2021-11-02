@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -9,8 +11,8 @@ import com.qualcomm.robotcore.util.Range;
 
 import static android.os.SystemClock.sleep;
 
-@TeleOp(name = "{ProgrammingBoard_Code", group = "team")
-public class FY21ProgramBoard2 extends OpMode {
+@Autonomous(name = "{ProgrammingBoard_Code", group = "team")
+public class FY21ProgramBoard2 extends LinearOpMode {
 
     //define motors and stuff
     DcMotor Large;
@@ -18,29 +20,58 @@ public class FY21ProgramBoard2 extends OpMode {
     DcMotor Rev;
     Servo Pass;
     ColorSensor RubberDuck;
-
-    public void init() {
+    int currentstep = 0;
+    public void runOpMode(){
     //hardware maps
-    Large = hardwareMap.dcMotor.get("LM"); //port 3
+    Large = hardwareMap.dcMotor.get("LM"); //port 3 Andy Mark
     Small = hardwareMap.dcMotor.get("SM"); //port 0
     Rev = hardwareMap.dcMotor.get("HM"); //port 2
     Pass = hardwareMap.servo.get("S"); // medium port 3
     RubberDuck = hardwareMap.colorSensor.get("RD"); //small port 0
-    }
 
-    public void loop() {
-        if (gamepad1.dpad_up) {
+
+    waitForStart();
+        while (opModeIsActive()) {
+
+        if (currentstep == 0) {
+            currentstep++;
+        }
+
+        if (currentstep == 1) {
+            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.update();
+//This is the autonomous code.
+
+            //Use LM
             Large.setPower(0.5);
             sleep(1000);
             Large.setPower(0);
+            currentstep++;
         }
-        if (gamepad1.left_bumper) {
-            Double FlickPosition = (0.8);
-            FlickPosition = Range.clip(FlickPosition,0,1);
-            Pass.setPosition(FlickPosition);
-            telemetry.addData("Flick",FlickPosition);
+        if (currentstep == 2) {
+            telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
+            //Use SM
+            Small.setPower(0.5);
+            sleep(1050);
+            Small.setPower(0);
         }
+            if (currentstep == 3) {
+                telemetry.addData("inside currentstep:", currentstep);
+                telemetry.update();
+                //Use HM
+                Rev.setPower(0.5);
+                sleep(1500);
+                Rev.setPower(0);
+            }
+            if (currentstep == 4) {
+                telemetry.addData("inside currentstep:", currentstep);
+                telemetry.update();
+                //Use S
+                Pass.setPosition(90);
+                sleep(1080);
+                Pass.setPosition(0);
+            }
     }
-}
+}}
 
