@@ -6,12 +6,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 import static android.os.SystemClock.sleep;
 
-@Autonomous(name = "ProgrammingBoard_Auto", group = "team")
+@Autonomous(name = "FY21ProgramBoardAuto", group = "team")
 public class FY21ProgramBoardAuto extends LinearOpMode {
 
     //define motors and stuff
