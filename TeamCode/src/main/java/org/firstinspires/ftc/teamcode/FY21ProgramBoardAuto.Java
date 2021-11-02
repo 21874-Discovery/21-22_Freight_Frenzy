@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.util.Range;
 
 import static android.os.SystemClock.sleep;
 
-@Autonomous(name = "{ProgrammingBoard_Code", group = "team")
-public class FY21ProgramBoard2 extends LinearOpMode {
+@Autonomous(name = "ProgrammingBoard_Auto", group = "team")
+public class FY21ProgramBoardAuto extends LinearOpMode {
 
     //define motors and stuff
     DcMotor Large;
@@ -55,6 +55,7 @@ public class FY21ProgramBoard2 extends LinearOpMode {
             Small.setPower(0.5);
             sleep(1050);
             Small.setPower(0);
+            currentstep++;
         }
             if (currentstep == 3) {
                 telemetry.addData("inside currentstep:", currentstep);
@@ -63,6 +64,7 @@ public class FY21ProgramBoard2 extends LinearOpMode {
                 Rev.setPower(0.5);
                 sleep(1500);
                 Rev.setPower(0);
+                currentstep++;
             }
             if (currentstep == 4) {
                 telemetry.addData("inside currentstep:", currentstep);
