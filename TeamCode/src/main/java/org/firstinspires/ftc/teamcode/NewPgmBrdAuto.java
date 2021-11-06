@@ -17,6 +17,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
     //define motors
     ColorSensor RubberDuck; //left
     DcMotor Large;
+    DcMotor Small;
     //define variables
     int currentstep = 0;
     String barcode = "none";
@@ -27,7 +28,6 @@ public class NewPgmBrdAuto extends LinearOpMode {
         Large.setDirection(DcMotorSimple.Direction.FORWARD);
         waitForStart();
         while (opModeIsActive()) {
-
             if (currentstep == 0) {
                 currentstep++;
             }
@@ -50,7 +50,11 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 //Read barcode, choose left/center/right
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
-
+                //Use SM
+                Small.setPower(0.5);
+                sleep(1050);
+                Small.setPower(0);
+                currentstep++;
 
                 //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
                 //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
