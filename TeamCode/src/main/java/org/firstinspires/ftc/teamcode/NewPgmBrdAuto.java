@@ -26,6 +26,8 @@ public class NewPgmBrdAuto extends LinearOpMode {
         RubberDuck = hardwareMap.colorSensor.get("RD");
         Large = hardwareMap.dcMotor.get("LM"); //port 3 Andy Mark
         Large.setDirection(DcMotorSimple.Direction.FORWARD);
+        Small = hardwareMap.dcMotor.get("SM"); //port 0
+        Small.setDirection(DcMotorSimple.Direction.FORWARD);
         waitForStart();
         while (opModeIsActive()) {
             if (currentstep == 0) {
@@ -38,7 +40,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
 //This is the autonomous code.
 
                 //Move Forward 1.5 squares
-                currentstep++;
+
 
                 //Use LM
                 Large.setPower(0.5);
@@ -52,42 +54,13 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 //Duck Scanner 2 right side
                 //Use SM
                 Small.setPower(0.5);
-                sleep(1050);
+                sleep(1000);
                 Small.setPower(0);
                 currentstep++;
 
-                //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
-                //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
-                //if duckScanner1 <> yellow and duckScanner2 <> yellow set barcode=center
-                if (barcode.equals("left")) {
-                    //if barcode=left then
-                    //move forward 1 square
-                    //slide right 1 square
-                    //place freight on bottom rack
-                }
 
-                if (barcode.equals("right")) {
-                    //if barcode=left then
-                    //slide left 1 square
-                    //move forward 1 square
-                    //slide right 1 square
-                    //rotate 90deg clockwise
-                    //place freight on top rack
-                }
 
-                if (barcode.equals("center")) {
-                    //if barcode=left then
-                    //slide left 1 square
-                    //move forward 1 square
-                    //rotate 90deg clockwise
-                    //move forward 1 square
-                    //place freight on middle rack
-                }
 
-                //move back 1.5 squares
-                //slide right 2 squares
-                //spin carousel
-                //slide left 1 square
             }
         }
 /*
