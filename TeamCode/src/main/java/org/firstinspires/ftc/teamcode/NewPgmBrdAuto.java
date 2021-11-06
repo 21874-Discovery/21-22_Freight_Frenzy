@@ -16,13 +16,15 @@ import com.qualcomm.robotcore.util.Range;
 public class NewPgmBrdAuto extends LinearOpMode {
     //define motors
     ColorSensor RubberDuck; //left
+    DcMotor Large;
     //define variables
     int currentstep = 0;
     String barcode = "none";
     public void runOpMode() {
         //define hardware map
         RubberDuck = hardwareMap.colorSensor.get("RD");
-
+        Large = hardwareMap.dcMotor.get("LM"); //port 3 Andy Mark
+        Large.setDirection(DcMotorSimple.Direction.FORWARD);
         waitForStart();
         while (opModeIsActive()) {
 
@@ -36,6 +38,12 @@ public class NewPgmBrdAuto extends LinearOpMode {
 //This is the autonomous code.
 
                 //Move Forward 1.5 squares
+                currentstep++;
+
+                //Use LM
+                Large.setPower(0.5);
+                sleep(1000);
+                Large.setPower(0);
                 currentstep++;
             }
             if (currentstep == 2) {
