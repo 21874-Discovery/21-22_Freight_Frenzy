@@ -17,12 +17,12 @@ public class NewPgmBrdAuto extends LinearOpMode {
     DcMotor Small;
     DcMotor Rev;
     Servo Pass;
+    ColorSensor sensorColor;
     //define variables
     int currentstep = 0;
     String barcode = "none";
     public void runOpMode() {
         //define hardware map
-        RubberDuck = hardwareMap.colorSensor.get("RD");
         Large = hardwareMap.dcMotor.get("LM"); //port 3 Andy Mark
         Large.setDirection(DcMotorSimple.Direction.FORWARD);
         Small = hardwareMap.dcMotor.get("SM"); //port 0
@@ -31,6 +31,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
         Rev.setDirection(DcMotorSimple.Direction.FORWARD);
         Pass = hardwareMap.servo.get("S"); // medium port 3
         Pass.setDirection(Servo.Direction.FORWARD);
+        sensorColor = hardwareMap.get(ColorSensor.class, "RD");
         waitForStart();
         while (opModeIsActive()) {
             if (currentstep == 0) {
@@ -80,8 +81,14 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 Pass.setPosition(90);
                 sleep(1000);
                 Pass.setPosition(0);
-
-
+                currentstep++;
+             if (currentstep == 5) {
+                 sleep(1000);
+                 telemetry.addData("Red Value ", sensorColor.red());
+                 telemetry.addData("Blue Value ", sensorColor.blue());
+                 telemetry.update();
+                 sleep(2000);
+             }
             }
         }
 /*
