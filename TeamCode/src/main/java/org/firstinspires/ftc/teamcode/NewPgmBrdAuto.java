@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 @Autonomous(name = "PgmBrdAuto_New", group = "team")
@@ -15,6 +16,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
     DcMotor Large;
     DcMotor Small;
     DcMotor Rev;
+    Servo Pass;
     //define variables
     int currentstep = 0;
     String barcode = "none";
@@ -27,6 +29,8 @@ public class NewPgmBrdAuto extends LinearOpMode {
         Small.setDirection(DcMotorSimple.Direction.FORWARD);
         Rev = hardwareMap.dcMotor.get("HM"); //port 2
         Rev.setDirection(DcMotorSimple.Direction.FORWARD);
+        Pass = hardwareMap.servo.get("S"); // medium port 3
+        Pass.setDirection(Servo.Direction.FORWARD);
         waitForStart();
         while (opModeIsActive()) {
             if (currentstep == 0) {
@@ -48,6 +52,9 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 currentstep++;
             }
             if (currentstep == 2) {
+                telemetry.addData("inside currentstep:", currentstep);
+                telemetry.update();
+
                 //Read barcode, choose left/center/right
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
@@ -58,12 +65,21 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 currentstep++;
             }
                 if (currentstep == 3) {
+                    telemetry.addData("inside currentstep:", currentstep);
+                    telemetry.update();
                     //Use HM
                     Rev.setPower(0.5);
-                    sleep(1500);
+                    sleep(1000);
                     Rev.setPower(0);
                     currentstep++;
-
+                }
+            if (currentstep == 4) {
+                telemetry.addData("inside currentstep:", currentstep);
+                telemetry.update();
+                //Use Servo
+                Pass.setPosition(90);
+                sleep(1000);
+                Pass.setPosition(0);
 
 
             }
