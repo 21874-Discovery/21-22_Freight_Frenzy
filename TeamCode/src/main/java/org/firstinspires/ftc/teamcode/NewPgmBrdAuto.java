@@ -2,13 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous(name = "PgmBrdAuto_New", group = "team")
@@ -18,6 +14,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
     ColorSensor RubberDuck; //left
     DcMotor Large;
     DcMotor Small;
+    DcMotor Rev;
     //define variables
     int currentstep = 0;
     String barcode = "none";
@@ -28,6 +25,8 @@ public class NewPgmBrdAuto extends LinearOpMode {
         Large.setDirection(DcMotorSimple.Direction.FORWARD);
         Small = hardwareMap.dcMotor.get("SM"); //port 0
         Small.setDirection(DcMotorSimple.Direction.FORWARD);
+        Rev = hardwareMap.dcMotor.get("HM"); //port 2
+        Rev.setDirection(DcMotorSimple.Direction.FORWARD);
         waitForStart();
         while (opModeIsActive()) {
             if (currentstep == 0) {
@@ -57,7 +56,13 @@ public class NewPgmBrdAuto extends LinearOpMode {
                 sleep(1000);
                 Small.setPower(0);
                 currentstep++;
-
+            }
+                if (currentstep == 3) {
+                    //Use HM
+                    Rev.setPower(0.5);
+                    sleep(1500);
+                    Rev.setPower(0);
+                    currentstep++;
 
 
 
