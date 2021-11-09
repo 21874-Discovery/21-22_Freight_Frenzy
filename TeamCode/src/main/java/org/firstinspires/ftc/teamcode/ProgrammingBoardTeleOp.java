@@ -12,6 +12,8 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+sensorColor = hardwareMap.get(ColorSensor.class, "colorSensor");
+
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import static android.os.SystemClock.sleep;
@@ -64,6 +66,8 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         return colorSensor.red(); //Can change color to whatever needed later duck color
     }
 
+    duckScanner1 = hardwareMap.colorSensor.get("DS1");
+
     public int getAmountBlue() {
         return colorSensor.blue(); //Can change color to whatever needed later duck color
     }
@@ -92,11 +96,11 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         Rev = hardwareMap.dcMotor.get("HM"); //port 2
         Pass = hardwareMap.servo.get("S"); // medium port 3
         RubberDuck = hardwareMap.colorSensor.get("RD"); //small port
-        telemetry.addData("Amount red", getAmountRed());
+        telemetry.addData("Red Value ", sensorColor.red());
         telemetry.addData("Amount blue", getAmountBlue());
         telemetry.addData("Amount green", getAmountGreen());
-        telemetry.addData("Distance (CM)", getDistance(DistanceUnit.CM));
-        telemetry.addData("Distance (IN)", getDistance(DistanceUnit.INCH));
+       // telemetry.addData("Distance (CM)", getDistance(DistanceUnit.CM));
+       // telemetry.addData("Distance (IN)", getDistance(DistanceUnit.INCH));
 
             waitForStart();
 
