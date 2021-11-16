@@ -60,13 +60,13 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         return colorSensor.red(); //Can change color to whatever needed later duck color
     }
 
-    public int getAmountBlue() {
-        return colorSensor.blue(); //Can change color to whatever needed later duck color
-    }
+    //public int getAmountBlue() {
+        //return colorSensor.blue(); //Can change color to whatever needed later duck color
+    //}
 
-    public int getAmountGreen() {
-        return colorSensor.green(); //Can change color to whatever needed later duck color
-    }
+    //public int getAmountGreen() {
+        //return colorSensor.green(); //Can change color to whatever needed later duck color
+    //}
 
     public double getDistance(DistanceUnit du) {
         return distanceSensor.getDistance(du);
@@ -88,9 +88,7 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         Rev = hardwareMap.dcMotor.get("HM"); //port 2
         Pass = hardwareMap.servo.get("S"); // medium port 3
         RubberDuck = hardwareMap.colorSensor.get("RD"); //small port
-        telemetry.addData("Red Value ", colorSensor.red());
-        telemetry.addData("Amount blue", getAmountBlue());
-        telemetry.addData("Amount green", getAmountGreen());
+        telemetry.addData("Red Value ", ColorSensor.red());
        // telemetry.addData("Distance (CM)", getDistance(DistanceUnit.CM));
        // telemetry.addData("Distance (IN)", getDistance(DistanceUnit.INCH));
 
