@@ -86,6 +86,7 @@ public class NewPgmBrdAuto extends LinearOpMode {
                     sleep(1000);
                     telemetry.addData("Red Value ", sensorColor.red());
                     telemetry.addData("Blue Value ", sensorColor.blue());
+                    telemetry.addData("Green Value ", sensorColor.green());
                     telemetry.update();
                     sleep(2000);
                 }
