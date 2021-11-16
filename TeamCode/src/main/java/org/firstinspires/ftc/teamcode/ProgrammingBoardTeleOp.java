@@ -77,7 +77,7 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
     DcMotor Small;
     DcMotor Rev;
     Servo Pass;
-    ColorSensor RubberDuck;
+    ColorSensor sensorColor;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -87,13 +87,11 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         Small = hardwareMap.dcMotor.get("SM"); //port 0
         Rev = hardwareMap.dcMotor.get("HM"); //port 2
         Pass = hardwareMap.servo.get("S"); // medium port 3
-        RubberDuck = hardwareMap.colorSensor.get("RD"); //small port
-        telemetry.addData("Red Value ", ColorSensor.red());
+        sensorColor = hardwareMap.get(ColorSensor.class, "RD"); //small port
        // telemetry.addData("Distance (CM)", getDistance(DistanceUnit.CM));
        // telemetry.addData("Distance (IN)", getDistance(DistanceUnit.INCH));
 
             waitForStart();
-
             while (opModeIsActive()) {
                 if (gamepad1.x) {
                     Large.setPower(-1.0);
@@ -109,6 +107,7 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
                     Rev.setPower(0.5);
                     sleep(1000);
                     Rev.setPower(0);
+                    telemetry.addData("Red Value ", sensorColor.red());
                 }
                 if (gamepad1.a) {
                     Small.setPower(0.5);
