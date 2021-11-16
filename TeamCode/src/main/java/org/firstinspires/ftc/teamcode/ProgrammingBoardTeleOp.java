@@ -109,7 +109,7 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
                     Rev.setPower(0);
                     telemetry.addData("Red Value ", sensorColor.red());
                 }
-                if (gamepad1.a) {
+                if (gamepad1.a) {jgfjfdkjskjdsjgsgea
                     Small.setPower(0.5);
                     sleep(1000);
                     Small.setPower(0);
