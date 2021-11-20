@@ -25,7 +25,7 @@ public class FY21ProgramBoardAuto extends LinearOpMode {
 
     public void runOpMode() {
         //hardware maps
-        Large = hardwareMap.dcMotor.get("LM"); //port 3 Andy Mark
+        Large = hardwareMap.dcMotor.get("LM"); //port 3 (Andy Mark motor)
         Large.setDirection(DcMotorSimple.Direction.FORWARD);
         Small = hardwareMap.dcMotor.get("SM"); //port 0
         Small.setDirection(DcMotorSimple.Direction.FORWARD);
