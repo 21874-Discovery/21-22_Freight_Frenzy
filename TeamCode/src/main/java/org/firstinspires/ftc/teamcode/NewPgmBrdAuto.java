@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @Autonomous(name = "PgmBrdAuto_New", group = "team")
 
 public class NewPgmBrdAuto extends LinearOpMode {
-    //define motors
+    //d cefine motors
     ColorSensor RubberDuck; //left
     DcMotor Large;
     DcMotor Small;

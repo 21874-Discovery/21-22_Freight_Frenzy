@@ -31,7 +31,6 @@ public class ProgrammingBoardTeleOp extends LinearOpMode {
         ticksPerRotation = motor.getMotorType().getTicksPerRev();
         servo = hwMap.get(Servo.class, "servo");
         pot = hwMap.get(AnalogInput.class, "pot");
-
         colorSensor = hwMap.get(ColorSensor.class, "RD");
         distanceSensor = hwMap.get(DistanceSensor.class, "sensor_color_distance");
     }
