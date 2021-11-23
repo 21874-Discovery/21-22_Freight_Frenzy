@@ -38,12 +38,12 @@ public class FY21Autonomous extends LinearOpMode {
             if (currentstep == 1) {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
-//This is the autonomous code.
-
-                //Move Forward 1.5 squares
+                //Move Forward 0.5
+                //turn 90 degrees
                 currentstep++;
             }
             if (currentstep == 2) {
+
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
                 //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
