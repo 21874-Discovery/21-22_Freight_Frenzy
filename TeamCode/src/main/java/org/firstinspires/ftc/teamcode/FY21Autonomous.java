@@ -17,6 +17,7 @@ public class FY21Autonomous extends LinearOpMode {
     //define motors
     ColorSensor duckScanner1; //left
     ColorSensor duckScanner2; //right
+    ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
     String barcode = "none";
@@ -24,6 +25,7 @@ public class FY21Autonomous extends LinearOpMode {
         //define hardware map
         duckScanner1 = hardwareMap.colorSensor.get("DS1");
         duckScanner2 = hardwareMap.colorSensor.get("DS2");
+
         waitForStart();
         while (opModeIsActive()) {
 
@@ -40,10 +42,9 @@ public class FY21Autonomous extends LinearOpMode {
                 currentstep++;
             }
             if (currentstep == 2) {
-                //Read barcode, choose left/center/right
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
-
+                //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
 
                 //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
                 //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
@@ -92,5 +93,16 @@ public class FY21Autonomous extends LinearOpMode {
         rightFront.setPower(v2);
         leftRear.setPower(v3);
         rightRear.setPower(v4);*/
+    }
+}
+
+public void DCSUPERCOLOR (){
+    if(duckScanner1.red()>73 && duckScanner1.red()<117) {
+        if(duckScanner1.blue()>69 && duckScanner1.blue()<94) {
+            if(duckScanner1.green()>102 && duckScanner1.green()<166) {
+
+            }
+
+        }
     }
 }
