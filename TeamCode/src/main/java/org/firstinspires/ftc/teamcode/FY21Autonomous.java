@@ -3,12 +3,17 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 
 @Autonomous(name = "FY21Auto", group = "team")
 
 public class FY21Autonomous extends LinearOpMode {
-    //define motors
+    //define motors and stuff
+    DcMotor topRight;
+    DcMotor bottomRight;
+    DcMotor topLeft;
+    DcMotor bottomLeft;
     ColorSensor duckScanner1; //left
     ColorSensor duckScanner2; //right
     ColorSensor ColorSensor;
@@ -19,7 +24,10 @@ public class FY21Autonomous extends LinearOpMode {
         //define hardware map
         duckScanner1 = hardwareMap.colorSensor.get("DS1");
         duckScanner2 = hardwareMap.colorSensor.get("DS2");
-
+        topRight = hardwareMap.dcMotor.get("TR"); //port 0
+        bottomRight = hardwareMap.dcMotor.get("BR"); //port 1
+        topLeft = hardwareMap.dcMotor.get("TL"); //port 2
+        bottomLeft = hardwareMap.dcMotor.get("BL"); //port 3
         waitForStart();
         while (opModeIsActive()) {
 
