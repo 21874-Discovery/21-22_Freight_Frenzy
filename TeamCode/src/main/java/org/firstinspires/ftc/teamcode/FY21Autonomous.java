@@ -94,7 +94,7 @@ public class FY21Autonomous extends LinearOpMode {
         leftRear.setPower(v3);
         rightRear.setPower(v4);*/
     }
-}
+
 
 public void DCSUPERCOLOR (){
     if(duckScanner1.red()>73 && duckScanner1.red()<117) {
@@ -105,4 +105,5 @@ public void DCSUPERCOLOR (){
 
         }
     }
+}
 }
