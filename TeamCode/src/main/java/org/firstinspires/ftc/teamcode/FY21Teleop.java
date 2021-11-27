@@ -27,16 +27,16 @@ public class FY21Teleop extends LinearOpMode {
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.left_bumper = true) {
+            if (gamepad1.right_bumper) {
                 speed = 0.25;
             }
-            if (gamepad1.left_bumper = false) {
+            if (!gamepad1.right_bumper) {
                 speed = 1;
             }
-            if (gamepad1.x = true) {
+            if (gamepad1.x) {
                 carouselSpeed = 1;
             }
-            if (gamepad1.x = false) {
+            if (!gamepad1.x) {
                 carouselSpeed = 0;
             }
 
