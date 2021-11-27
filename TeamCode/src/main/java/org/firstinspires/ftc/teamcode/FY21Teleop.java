@@ -14,6 +14,7 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor carouselSpinner;
 
     double speed = 1;
+    double carouselSpeed = 0;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -31,6 +32,12 @@ public class FY21Teleop extends LinearOpMode {
             }
             if (gamepad1.left_bumper = false) {
                 speed = 1;
+            }
+            if (gamepad1.x = true) {
+                carouselSpeed = 1;
+            }
+            if (gamepad1.x = false) {
+                carouselSpeed = 0;
             }
 
             /*double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
@@ -66,6 +73,7 @@ public class FY21Teleop extends LinearOpMode {
             bottomRight.setPower(bottomRightCorrectedSpeed);
             topLeft.setPower(topLeftCorrectedSpeed);
             bottomLeft.setPower(bottomLeftCorrectedSpeed);
+            carouselSpinner.setPower(carouselSpeed);
         }
     }
 }
