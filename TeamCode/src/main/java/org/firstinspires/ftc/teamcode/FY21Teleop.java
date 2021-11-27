@@ -11,6 +11,7 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor bottomRight;
     DcMotor topLeft;
     DcMotor bottomLeft;
+    DcMotor carouselSpinner;
 
     double speed = 1;
 
@@ -18,10 +19,11 @@ public class FY21Teleop extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         //Engineers using REV CoreHex motors for "spinney box" and Linear Slide
         //hardware maps
-        topRight = hardwareMap.dcMotor.get("TR"); //port 0
-        bottomRight = hardwareMap.dcMotor.get("BR"); //port 1
-        topLeft = hardwareMap.dcMotor.get("TL"); //port 2
-        bottomLeft = hardwareMap.dcMotor.get("BL"); //port 3
+        topRight = hardwareMap.dcMotor.get("TR"); // control hub port 0
+        bottomRight = hardwareMap.dcMotor.get("BR"); //control hub port 1
+        topLeft = hardwareMap.dcMotor.get("TL"); //control hub port 2
+        bottomLeft = hardwareMap.dcMotor.get("BL"); //control hub port 3
+        carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.left_bumper = true) {
