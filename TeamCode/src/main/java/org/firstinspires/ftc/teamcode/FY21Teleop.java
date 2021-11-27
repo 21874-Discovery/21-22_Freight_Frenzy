@@ -27,16 +27,16 @@ public class FY21Teleop extends LinearOpMode {
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.right_bumper) {
+            if (gamepad1.right_bumper) { //when held, will slow the robot down for precise driving.
                 speed = 0.25;
             }
-            if (!gamepad1.right_bumper) {
+            if (!gamepad1.right_bumper) { //when released, speed will be brought back to 1. Exclamation marks are "not" functions.
                 speed = 1;
             }
-            if (gamepad1.x) {
+            if (gamepad1.x) { //when held, will spin the carousel spinner.
                 carouselSpeed = 1;
             }
-            if (!gamepad1.x) {
+            if (!gamepad1.x) { //when released, will stop spinning the carousel spinner.
                 carouselSpeed = 0;
             }
 
