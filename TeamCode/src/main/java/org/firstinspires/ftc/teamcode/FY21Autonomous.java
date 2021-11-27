@@ -20,6 +20,7 @@ public class FY21Autonomous extends LinearOpMode {
     //define variables
     int currentstep = 0;
     String barcode = "none";
+
     public void runOpMode() {
         //define hardware map
         duckScanner1 = hardwareMap.colorSensor.get("DS1");
@@ -98,17 +99,18 @@ public class FY21Autonomous extends LinearOpMode {
     }
 
 
-public void DCSUPERCOLOR (){
-    if(duckScanner1.red()>72 && duckScanner1.red()<118) {
-        if(duckScanner1.blue()>68 && duckScanner1.blue()<95) {
-            if(duckScanner1.green()>101 && duckScanner1.green()<167) {
+    public void DCSUPERCOLOR() {
+        if (duckScanner1.red() > 72 && duckScanner1.red() < 118) {
+            if (duckScanner1.blue() > 68 && duckScanner1.blue() < 95) {
+                if (duckScanner1.green() > 101 && duckScanner1.green() < 167) {
+
+                }
 
             }
-
         }
     }
-}
-    public void Mechnum_drive () {
+
+    public void Mechnum_drive() {
 
 
         double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);

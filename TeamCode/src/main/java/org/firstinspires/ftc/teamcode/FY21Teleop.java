@@ -26,12 +26,12 @@ public class FY21Teleop extends LinearOpMode {
         while (opModeIsActive()) {
             if (gamepad1.left_bumper) {
                 if (speed < 1) {
-                    speed = speed + 0.25;
+                    speed = (speed + 0.25);
                 }
             }
             if (gamepad1.right_bumper) {
                 if (speed > 0.25) {
-                    speed = speed - 0.25;
+                    speed = (speed - 0.25);
                 }
             }
 
