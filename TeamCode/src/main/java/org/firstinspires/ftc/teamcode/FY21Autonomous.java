@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
 @Autonomous(name = "FY21Auto", group = "team")
@@ -131,20 +132,39 @@ public class FY21Autonomous extends LinearOpMode {
 
 
 
-    public void Mechnum_drive() {
+    public void Mechanum_drive(String Dir, double speed, int distance) {
 
+        topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
-        double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
-        double rightX = gamepad1.right_stick_x;
-        final double v1 = r * Math.cos(robotAngle) + rightX;
-        final double v2 = r * Math.sin(robotAngle) - rightX;
-        final double v3 = r * Math.sin(robotAngle) + rightX;
-        final double v4 = r * Math.cos(robotAngle) - rightX;
-
-        topRight.setPower(v1);
-        bottomRight.setPower(v2);
-        topLeft.setPower(v3);
-        bottomLeft.setPower(v4);
+        switch (Dir){
+            case "Forward":
+                topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                break;
+            case "Backward":
+                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                break;
+            case "Left":
+                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                break;
+            case "Right":
+                topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                break;
+        }
     }
+
 }
