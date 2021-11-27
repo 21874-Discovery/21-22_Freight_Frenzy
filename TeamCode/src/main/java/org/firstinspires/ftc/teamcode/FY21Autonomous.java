@@ -39,13 +39,26 @@ public class FY21Autonomous extends LinearOpMode {
             if (currentstep == 1) {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
-
                 //Move Forward 0.5
                 //turn 90 degrees
                 currentstep++;
             }
             if (currentstep == 2) {
-                DCSUPERCOLOR(duckScannerLeft);
+                if (DCSUPERCOLOR(duckScannerLeft)){
+                    //If duck middle
+                    // slide right 1
+                    //top- full arm exstention
+                    //mid- half exstention
+                    //bottom- lowest exstention
+                }
+                //movement code to slide left 1/2
+                if (DCSUPERCOLOR(duckScannerLeft)){
+                    //If duck left
+                }
+                //Slide 3/4 right
+                if (DCSUPERCOLOR(duckScannerLeft)){
+                    //If duck right
+                }
 
 
                 //Duck Scanner 1 left side
