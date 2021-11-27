@@ -24,20 +24,16 @@ public class FY21Teleop extends LinearOpMode {
         bottomLeft = hardwareMap.dcMotor.get("BL"); //port 3
         waitForStart();
         while (opModeIsActive()) {
-            if (gamepad1.x) {
-                speed = .5;
+            if (gamepad1.left_bumper) {
+                if (speed < 1) {
+                    speed = speed + 0.25;
+                }
             }
-            if (gamepad1.y) {
-                speed = .25;
+            if (gamepad1.right_bumper) {
+                if (speed > 0.25) {
+                    speed = speed - 0.25;
+                }
             }
-            if (gamepad1.b) {
-
-            }
-
-            if (gamepad1.a) {
-                speed = 1;
-            }
-
 
             /*double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
