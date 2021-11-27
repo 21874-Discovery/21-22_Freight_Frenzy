@@ -34,7 +34,7 @@ public class FY21Teleop extends LinearOpMode {
                 speed = 1;
             }
             if (gamepad1.x) { //when held, will spin the carousel spinner.
-                carouselSpeed = 2;
+                carouselSpeed = 1;
             }
             if (!gamepad1.x) { //when released, will stop spinning the carousel spinner.
                 carouselSpeed = 0;

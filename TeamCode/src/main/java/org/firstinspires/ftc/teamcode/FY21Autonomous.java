@@ -50,6 +50,7 @@ public class FY21Autonomous extends LinearOpMode {
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
+                    telemetry.addData("Duck is here", ColorSensor.red());
                 }
                 //movement code to slide left 1/2
                 if (DCSUPERCOLOR(duckScannerLeft)){
