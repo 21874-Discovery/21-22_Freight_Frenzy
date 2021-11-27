@@ -103,7 +103,7 @@ public class FY21Autonomous extends LinearOpMode {
         if (duckScanner1.red() > 72 && duckScanner1.red() < 118) {
             if (duckScanner1.blue() > 68 && duckScanner1.blue() < 95) {
                 if (duckScanner1.green() > 101 && duckScanner1.green() < 167) {
-
+                    //the duck is on this spot
                 }
 
             }
