@@ -25,10 +25,10 @@ public class FY21Teleop extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.left_bumper = true) {
-                speed = 0.25
+                speed = 0.25;
             }
             if (gamepad1.left_bumper = false) {
-                speed = 1
+                speed = 1;
             }
 
             /*double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
