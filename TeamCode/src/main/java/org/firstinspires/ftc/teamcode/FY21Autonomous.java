@@ -14,8 +14,8 @@ public class FY21Autonomous extends LinearOpMode {
     DcMotor bottomRight;
     DcMotor topLeft;
     DcMotor bottomLeft;
-    ColorSensor duckScanner1; //left
-    ColorSensor duckScanner2; //right
+    ColorSensor duckScannerLeft; //left
+    ColorSensor duckScannerRight; //right
     ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
@@ -23,8 +23,8 @@ public class FY21Autonomous extends LinearOpMode {
 
     public void runOpMode() {
         //define hardware map
-        duckScanner1 = hardwareMap.colorSensor.get("DS1");
-        duckScanner2 = hardwareMap.colorSensor.get("DS2");
+        duckScannerLeft = hardwareMap.colorSensor.get("DS1");
+        duckScannerRight = hardwareMap.colorSensor.get("DS2");
         topRight = hardwareMap.dcMotor.get("TR"); //port 0
         bottomRight = hardwareMap.dcMotor.get("BR"); //port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //port 2
@@ -39,11 +39,14 @@ public class FY21Autonomous extends LinearOpMode {
             if (currentstep == 1) {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
+
                 //Move Forward 0.5
                 //turn 90 degrees
                 currentstep++;
             }
             if (currentstep == 2) {
+                DCSUPERCOLOR(duckScannerLeft);
+
 
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
@@ -99,16 +102,20 @@ public class FY21Autonomous extends LinearOpMode {
     }
 
 
-    public void DCSUPERCOLOR() {
-        if (duckScanner1.red() > 72 && duckScanner1.red() < 118) {
-            if (duckScanner1.blue() > 68 && duckScanner1.blue() < 95) {
-                if (duckScanner1.green() > 101 && duckScanner1.green() < 167) {
+    public boolean DCSUPERCOLOR(ColorSensor duck) {
+        if (duck.red() > 72 && duck.red() < 118) {
+            if (duck.blue() > 68 && duck.blue() < 95) {
+                if (duck.green() > 101 && duck.green() < 167) {
+                    return true;
                     //the duck is on this spot
                 }
 
             }
         }
+        return false;
     }
+
+
 
     public void Mechnum_drive() {
 
