@@ -45,8 +45,13 @@ public class FY21Teleop extends LinearOpMode {
                 carouselSpeed = 0;
             }
 
-            //linear slide control: x (gamepad 2)
-            //spindle control: a (gamepad 2)
+            if (gamepad2.x) {
+                //do the linear slide thing
+            }
+
+            if (gamepad2.a) {
+                //do the spindle thing
+            }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
             float gamepad1LeftX = gamepad1.left_stick_y;       // Sets the gamepads left sticks x position to a float so that we can easily track the stick
