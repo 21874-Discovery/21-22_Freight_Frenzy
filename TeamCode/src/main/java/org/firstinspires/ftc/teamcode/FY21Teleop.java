@@ -12,6 +12,8 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor topLeft;
     DcMotor bottomLeft;
     DcMotor carouselSpinner;
+    DcMotor linearSlide;
+    DcMotor spindle;
 
     double speed = 1;
     double carouselSpeed = 0;
@@ -24,7 +26,10 @@ public class FY21Teleop extends LinearOpMode {
         bottomRight = hardwareMap.dcMotor.get("BR"); //control hub port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //control hub port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //control hub port 3
+        linearSlide = hardwareMap.dcMotor.get("LSM"); //expansion hub port 0
+        spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
+
         waitForStart();
         while (opModeIsActive()) {
             if (gamepad1.right_bumper) { //when held, will slow the robot down for precise driving.
