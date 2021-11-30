@@ -16,6 +16,8 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor spindle;
 
     double speed = 1;
+    double linearSpeed = 0;
+    double spindleSpeed = 0;
     double carouselSpeed = 0;
 
     @Override
@@ -44,12 +46,36 @@ public class FY21Teleop extends LinearOpMode {
                 carouselSpeed = 0;
             }
 
-            if (gamepad2.x) {
-                //do the linear slide thing
+            if (gamepad2.a) {
+                linearSpeed = 0.5;
             }
 
-            if (gamepad2.a) {
-                //do the spindle thing
+            if (!gamepad2.a) {
+                linearSpeed = 0;
+            }
+
+            if (gamepad2.b) {
+                linearSpeed = -0.5;
+            }
+
+            if (!gamepad2.b) {
+                linearSpeed = 0;
+            }
+
+            if (gamepad2.x) {
+                spindleSpeed = 0.5;
+            }
+
+            if (!gamepad2.x) {
+                spindleSpeed = 0;
+            }
+
+            if (gamepad2.y) {
+                spindleSpeed = -0.5;
+            }
+
+            if (!gamepad2.y) {
+                spindleSpeed = 0;
             }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
@@ -72,6 +98,8 @@ public class FY21Teleop extends LinearOpMode {
             bottomRight.setPower(bottomRightCorrectedSpeed);
             topLeft.setPower(topLeftCorrectedSpeed);
             bottomLeft.setPower(bottomLeftCorrectedSpeed);
+            linearSlide.setPower(linearSpeed);
+            spindle.setPower(spindleSpeed);
             carouselSpinner.setPower(carouselSpeed);
         }
     }
