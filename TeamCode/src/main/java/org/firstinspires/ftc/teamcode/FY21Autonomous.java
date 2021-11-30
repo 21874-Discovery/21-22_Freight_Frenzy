@@ -46,6 +46,8 @@ public class FY21Autonomous extends LinearOpMode {
             }
             if (currentstep == 2) {
                 if (DCSUPERCOLOR(duckScannerLeft)){
+                    telemetry.addData("inside currentstep:", currentstep);
+                    telemetry.update();
                     //If duck middle
                     // slide right 1
                     //top- full arm exstention
