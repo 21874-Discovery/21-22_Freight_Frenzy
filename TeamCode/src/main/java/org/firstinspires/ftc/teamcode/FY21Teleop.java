@@ -20,7 +20,6 @@ public class FY21Teleop extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        //Engineers using REV CoreHex motors for "spinney box" and Linear Slide
         //hardware maps
         topRight = hardwareMap.dcMotor.get("TR"); // control hub port 0
         bottomRight = hardwareMap.dcMotor.get("BR"); //control hub port 1
