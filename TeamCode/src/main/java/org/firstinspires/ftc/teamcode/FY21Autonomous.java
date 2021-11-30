@@ -17,7 +17,7 @@ public class FY21Autonomous extends LinearOpMode {
     DcMotor bottomLeft;
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
-    ColorSensor ColorSensor;
+    //ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
     String barcode = "none";
@@ -51,7 +51,7 @@ public class FY21Autonomous extends LinearOpMode {
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
-                    telemetry.addData("Duck is here", ColorSensor.red());
+                    //telemetry.addData("Duck is here", ColorSensor.red());
                 }
                 //movement code to slide left 1/2
                 if (DCSUPERCOLOR(duckScannerLeft)){
@@ -66,9 +66,8 @@ public class FY21Autonomous extends LinearOpMode {
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
                 //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
-
-                //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
                 //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
+                //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
                 //if duckScanner1 <> yellow and duckScanner2 <> yellow set barcode=center
                 if (barcode.equals("left")) {
                     //if barcode=left then
