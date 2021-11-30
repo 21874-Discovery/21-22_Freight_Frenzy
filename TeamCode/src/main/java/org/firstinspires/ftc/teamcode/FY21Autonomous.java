@@ -51,7 +51,6 @@ public class FY21Autonomous extends LinearOpMode {
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
-                    //telemetry.addData("Duck is here", ColorSensor.red());
                 }
                 //movement code to slide left 1/2
                 if (DCSUPERCOLOR(duckScannerLeft)){
@@ -120,8 +119,12 @@ public class FY21Autonomous extends LinearOpMode {
         if (duck.red() > 72 && duck.red() < 118) {
             if (duck.blue() > 68 && duck.blue() < 95) {
                 if (duck.green() > 101 && duck.green() < 167) {
+                    telemetry.addData("Duck is here", duck.red());
+                    telemetry.addData("Duck is here", duck.blue());
+                    telemetry.addData("Duck is here", duck.green());
                     return true;
                     //the duck is on this spot
+
                 }
 
             }
