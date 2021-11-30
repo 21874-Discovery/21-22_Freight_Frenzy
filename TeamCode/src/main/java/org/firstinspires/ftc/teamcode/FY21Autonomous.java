@@ -136,7 +136,7 @@ public class FY21Autonomous extends LinearOpMode {
 
 
 
-    public void Mechanum_drive(String Dir, double speed, int distance) {
+    public void Mecanum_drive(String Dir, double speed, int distance) {
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -169,6 +169,9 @@ public class FY21Autonomous extends LinearOpMode {
                 bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
                 break;
         }
+    }
+    public void Mecanum_Turn(String DirT,double SpdT,int Deg){
+
     }
 
 }
