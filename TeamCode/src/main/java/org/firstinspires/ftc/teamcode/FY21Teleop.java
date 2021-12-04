@@ -19,6 +19,7 @@ public class FY21Teleop extends LinearOpMode {
     double linearSpeed = 0;
     double spindleSpeed = 0;
     double carouselSpeed = 0;
+    double teamSpin = 1;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -40,7 +41,7 @@ public class FY21Teleop extends LinearOpMode {
                 speed = 1;
             }
             if (gamepad1.x) { //when held, will spin the carousel spinner.
-                carouselSpeed = 1;
+                carouselSpeed = teamSpin;
             }
             if (!gamepad1.x) { //when released, will stop spinning the carousel spinner.
                 carouselSpeed = 0;
@@ -76,6 +77,17 @@ public class FY21Teleop extends LinearOpMode {
 
             if (!gamepad2.y) {
                 spindleSpeed = 0;
+            }
+
+            if (gamepad1.left_bumper) {
+                if (teamSpin == 1) {
+                    teamSpin = -1;
+                    sleep(3000);
+                }
+                if (teamSpin == -1) {
+                    teamSpin = 1;
+                    sleep (3000);
+                }
             }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
