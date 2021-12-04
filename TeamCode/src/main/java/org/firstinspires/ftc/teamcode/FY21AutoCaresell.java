@@ -52,6 +52,7 @@ public class FY21AutoCaresell extends LinearOpMode {
                     telemetry.update();
                     //If duck middle
                     // slide right 1
+
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
