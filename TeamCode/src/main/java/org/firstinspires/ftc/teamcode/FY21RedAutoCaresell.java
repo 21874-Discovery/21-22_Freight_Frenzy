@@ -9,12 +9,13 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous(name = "FY21Auto", group = "team")
 
-public class FY21AutoCaresell extends LinearOpMode {
+public class FY21RedAutoCaresell extends LinearOpMode {
     //define motors and stuff
     DcMotor topRight;
     DcMotor bottomRight;
     DcMotor topLeft;
     DcMotor bottomLeft;
+    DcMotor carouselSpinner;
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
     //ColorSensor ColorSensor;
@@ -30,6 +31,7 @@ public class FY21AutoCaresell extends LinearOpMode {
         bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
+        carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
         waitForStart();
         while (opModeIsActive()) {
 
@@ -52,16 +54,19 @@ public class FY21AutoCaresell extends LinearOpMode {
                     telemetry.update();
                     //If duck middle
                     // slide right 1
-
+                    Mecanum_Drive("Right",1.0,2000);
+                    //Drop freight
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
                 }
                 //movement code to slide left 1/2
+                Mecanum_Drive("Left",1.0,1000);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck left
                 }
                 //Slide 3/4 right
+                Mecanum_Drive("Right",1.0,1500);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck right
                 }
@@ -69,39 +74,53 @@ public class FY21AutoCaresell extends LinearOpMode {
 
                 //Duck Scanner 1 left side
                 //Duck Scanner 2 right side
-                //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
                 //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
                 //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
                 //if duckScanner1 <> yellow and duckScanner2 <> yellow set barcode=center
                 if (barcode.equals("left")) {
                     //if barcode=left then
                     //move forward 1 square
+                    Mecanum_Drive("Forward",1.0,2000);
                     //slide right 1 square
+                    Mecanum_Drive("Right",1.0,2000);
                     //place freight on bottom rack
                 }
 
                 if (barcode.equals("right")) {
                     //if barcode=left then
                     //slide left 1 square
+                    Mecanum_Drive("Left",1.0,2000);
                     //move forward 1 square
+                    Mecanum_Drive("Forward",1.0,2000);
                     //slide right 1 square
+                    Mecanum_Drive("Right",1.0,2000);
                     //rotate 90deg clockwise
+                    Mecanum_Turn("Right",1.0,90);
                     //place freight on top rack
                 }
 
                 if (barcode.equals("center")) {
                     //if barcode=left then
                     //slide left 1 square
+                    Mecanum_Drive("Left",1.0,2000);
                     //move forward 1 square
+                    Mecanum_Drive("Forward",1.0,2000);
                     //rotate 90deg clockwise
+                    Mecanum_Turn("Right",1.0,2000);
                     //move forward 1 square
+                    Mecanum_Drive("Forward",1.0,2000);
                     //place freight on middle rack
                 }
 
                 //move back 1.5 squares
+                Mecanum_Drive("Backward",1.0,1500);
                 //slide right 2 squares
-                //spin carousel
+                Mecanum_Drive("Right",1.0,4000);
+                carouselSpinner.setPower (1);
+                sleep (2000);
+                carouselSpinner.setPower (0);
                 //slide left 1 square
+                Mecanum_Drive("Left",1.0,2000);
             }
         }
 /*
