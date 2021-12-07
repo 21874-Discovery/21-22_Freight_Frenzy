@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+//1 centimeter - 0.393701 inches
 
 @Autonomous(name = "FY21Auto", group = "team")
 
@@ -47,7 +48,7 @@ public class FY21BlueCaresell2 extends LinearOpMode {
             //turn 90 degrees
             Mecanum_Turn("Right", 1.0, 90);
                //drop freight
-            Mecanum_drive("Forward", 1.0, 1500);
+            Mecanum_drive("Forward", 1.0, 1000);
             }
             currentstep++;
          }//It's over, Anakin. I have the high ground!
