@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous(name = "FY21Auto", group = "team")
@@ -138,7 +139,7 @@ public class FY21Autonomous extends LinearOpMode {
 
 
 
-   public void Mecanum_drive(String Dir, double speed, int distance) {
+   public void Mecanum_drive(String Dir, double Spd, int Dist) {
 
       topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -171,6 +172,23 @@ public class FY21Autonomous extends LinearOpMode {
             bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
       }
+      Dist=Math.abs(Dist);
+      topLeft.setTargetPosition(Dist);
+      topRight.setTargetPosition(Dist);
+      bottomLeft.setTargetPosition(Dist);
+      bottomRight.setTargetPosition(Dist);
+
+      topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+      Spd= Range.clip(Spd, 0, 1);
+      topLeft.setPower(Spd);
+      topRight.setPower(Spd);
+      bottomLeft.setPower(Spd);
+      bottomRight.setPower(Spd);
+
    }
    public void Mecanum_Turn(String DirT,double SpdT,int Deg) {
 
