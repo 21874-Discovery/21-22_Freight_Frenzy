@@ -15,6 +15,7 @@ public class FY21Autonomous extends LinearOpMode {
    DcMotor bottomRight;
    DcMotor topLeft;
    DcMotor bottomLeft;
+   DcMotor carouselSpinner;
    ColorSensor duckScannerLeft; //left
    ColorSensor duckScannerRight; //right
    //ColorSensor ColorSensor;
@@ -30,6 +31,7 @@ public class FY21Autonomous extends LinearOpMode {
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
+      carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
       waitForStart();
       while (opModeIsActive()) {
 
@@ -170,8 +172,7 @@ public class FY21Autonomous extends LinearOpMode {
             break;
       }
    }
-   public void Mecanum_Turn(String DirT,double SpdT,int Deg){
+   public void Mecanum_Turn(String DirT,double SpdT,int Deg) {
 
    }
-
 }
