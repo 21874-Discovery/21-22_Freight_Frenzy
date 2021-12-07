@@ -189,6 +189,20 @@ public class FY21Autonomous extends LinearOpMode {
       bottomLeft.setPower(Spd);
       bottomRight.setPower(Spd);
 
+
+      while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      {
+         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.update();
+         idle();
+      }
+      //stop
+      topLeft.setPower(0);
+      topRight.setPower(0);
+      bottomLeft.setPower(0);
+      bottomRight.setPower(0);
    }
    public void Mecanum_Turn(String DirT,double SpdT,int Deg) {
 

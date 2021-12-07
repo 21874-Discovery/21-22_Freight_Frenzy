@@ -45,9 +45,9 @@ public class FY21BlueCaresell extends LinearOpMode {
             //Move Forward 0.5
             Mecanum_drive("Forward", 1.0, 2000);
             //turn 90 degrees
-            Mecanum_Turn("Right", 1.0, 90);
+            Mecanum_Turn("Right", 1.0, 180);
                //drop freight
-            Mecanum_drive("Forward", 1.0, 1500);
+            Mecanum_drive("Left", 1.0, 1500);
             }
             currentstep++;
          }//It's over, Anakin. I have the high ground!
