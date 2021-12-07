@@ -15,6 +15,7 @@ public class FY21BlueCaresell extends LinearOpMode {
    DcMotor bottomRight;
    DcMotor topLeft;
    DcMotor bottomLeft;
+   DcMotor carouselSpinner;
    ColorSensor duckScannerLeft; //left
    ColorSensor duckScannerRight; //right
    //ColorSensor ColorSensor;
@@ -30,6 +31,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
+      carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
       waitForStart();
       while (opModeIsActive()) {
 
@@ -65,7 +67,9 @@ public class FY21BlueCaresell extends LinearOpMode {
             //drop freight
             Mecanum_drive("Left", 1.0, 2000);
             Mecanum_drive("Backward", 1.0, 4000);
-            //spin carousel
+            carouselSpinner.setPower(-1);
+            sleep(2000);
+            carouselSpinner.setPower(0);
             Mecanum_drive("Right", 1.0, 2000);
 
             //movement code to slide left 1/2
@@ -76,7 +80,9 @@ public class FY21BlueCaresell extends LinearOpMode {
                //drop freight
                Mecanum_drive("Left", 1.0, 2000);
                Mecanum_drive("Backward", 1.0, 4000);
-               //spin carousel
+               carouselSpinner.setPower(-1);
+               sleep(2000);
+               carouselSpinner.setPower(0);
                Mecanum_drive("Right", 1.0, 2000);
 
             }
@@ -87,7 +93,9 @@ public class FY21BlueCaresell extends LinearOpMode {
                //drop freight
                Mecanum_drive("Left", 1.0, 2000);
                Mecanum_drive("Backward", 1.0, 4000);
-               //spin carousel
+               carouselSpinner.setPower(-1);
+               sleep(2000);
+               carouselSpinner.setPower(0);
                Mecanum_drive("Right", 1.0, 2000);
             }
 
