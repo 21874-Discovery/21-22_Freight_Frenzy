@@ -31,7 +31,7 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
-        carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
+        carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2++
         waitForStart();
         while (opModeIsActive()) {
 
