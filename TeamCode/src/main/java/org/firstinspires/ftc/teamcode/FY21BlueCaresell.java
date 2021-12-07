@@ -133,7 +133,11 @@ public class FY21BlueCaresell extends LinearOpMode {
 
             //move back 1.5 squares
             //slide right 2 squares
-            //spin carousel
+            /*ADD IF NECESSARY ONLY
+               carouselSpinner.setPower(-1);
+               sleep(2000);
+               carouselSpinner.setPower(0);
+             */
             //slide left 1 square
          }
       }
