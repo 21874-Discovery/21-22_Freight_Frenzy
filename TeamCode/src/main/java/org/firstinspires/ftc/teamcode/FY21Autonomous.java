@@ -173,16 +173,16 @@ public class FY21Autonomous extends LinearOpMode {
             bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
          case "Left":
-            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
             topRight.setDirection(DcMotorSimple.Direction.REVERSE);
             bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
          case "Right":
-            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             topRight.setDirection(DcMotorSimple.Direction.FORWARD);
             bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
             break;
       }
       Dist = Math.abs(Dist);
