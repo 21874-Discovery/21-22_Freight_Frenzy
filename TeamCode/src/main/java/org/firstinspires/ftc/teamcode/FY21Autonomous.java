@@ -58,7 +58,7 @@ public class FY21Autonomous extends LinearOpMode {
             telemetry.update();
             //Move Forward 0.5
             //turn 90 degrees
-            Mecanum_drive("Forward", .5, 1000);
+            Mecanum_drive("Forward", .125, 1000);
             currentstep++;
          }
          if (currentstep == 2) {
@@ -161,16 +161,16 @@ public class FY21Autonomous extends LinearOpMode {
 
       switch (Dir) {
          case "Forward":
-            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
-            break;
-         case "Backward":
             topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             topRight.setDirection(DcMotorSimple.Direction.REVERSE);
             bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
             bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            break;
+         case "Backward":
+            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
          case "Left":
             topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
