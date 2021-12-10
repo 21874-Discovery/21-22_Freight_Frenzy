@@ -162,14 +162,14 @@ public class FY21Autonomous extends LinearOpMode {
       switch (Dir) {
          case "Forward":
             topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-            topRight.setDirection(DcMotorSimple.Direction.REVERSE);
-            bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
          case "Backward":
             topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
             bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
             break;
          case "Left":
