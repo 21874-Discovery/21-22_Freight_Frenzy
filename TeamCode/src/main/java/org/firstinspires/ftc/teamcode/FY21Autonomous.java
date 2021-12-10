@@ -58,7 +58,7 @@ public class FY21Autonomous extends LinearOpMode {
             telemetry.update();
             //Move Forward 0.5
             //turn 90 degrees
-            Mecanum_drive("Forward", .125, 1000);
+            Mecanum_drive("Backward", .125, 1000);
             currentstep++;
          }
          if (currentstep == 2) {
