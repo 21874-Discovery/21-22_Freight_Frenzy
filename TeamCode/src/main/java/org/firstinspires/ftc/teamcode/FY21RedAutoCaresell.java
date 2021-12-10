@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 
-@Autonomous(name = "FY21Auto", group = "team")
+@Autonomous(name = "FY21AutoRed", group = "team")
 
 public class FY21RedAutoCaresell extends LinearOpMode {
     //define motors and stuff
