@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //1 centimeter - 0.393701 inches
 
-@Autonomous(name = "FY21Auto", group = "team")
+@Autonomous(name = "FY21AutoBlueSpinner2", group = "team")
 
 public class FY21BlueCaresell2 extends LinearOpMode {
    //define motors and stuff
