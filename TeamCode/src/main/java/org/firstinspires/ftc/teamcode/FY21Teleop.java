@@ -79,15 +79,14 @@ public class FY21Teleop extends LinearOpMode {
                 spindleSpeed = 0;
             }
 
-            if (gamepad1.left_bumper) {
-                if (teamSpin == 1) {
-                    teamSpin = -1;
-                    sleep(3000);
-                }
-                if (teamSpin == -1) {
-                    teamSpin = 1;
-                    sleep (3000);
-                }
+            if (gamepad1.left_bumper && teamSpin == 1) {
+                teamSpin = -1;
+                sleep(3000);
+            }
+
+            if (gamepad1.left_bumper && teamSpin == -1) {
+                teamSpin = 1;
+                sleep(3000);
             }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
