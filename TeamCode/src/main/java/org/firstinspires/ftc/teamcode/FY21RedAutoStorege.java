@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous(name = "FY21AutoStorage", group = "team")
@@ -44,9 +42,9 @@ public class FY21RedAutoStorege extends LinearOpMode {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
                 //Move Forward 0.5
-                Mecanum_Drive("Forward",0.5,1000);
+                //Mecanum_Drive("Forward",0.5,1000);
                 //turn 90 degrees
-                Mecanum_Turn("Left",1.0,90);
+                //Mecanum_Turn("Left",1.0,90);
                 currentstep++;
             }
             if (currentstep == 2) {
@@ -55,19 +53,19 @@ public class FY21RedAutoStorege extends LinearOpMode {
                     telemetry.update();
                     //If duck middle
                     // slide right 1
-                    Mecanum_Drive("Left",1.0,2000);
+                  //  Mecanum_Drive("Left",1.0,2000);
                     //Drop freight
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
                 }
                 //movement code to slide left 1/2
-                Mecanum_Drive("Right",1.0,1000);
+                //Mecanum_Drive("Right",1.0,1000);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck left
                 }
                 //Slide 3/4 right
-                Mecanum_Drive("Left",1.0,1500);
+                //Mecanum_Drive("Left",1.0,1500);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck right
                 }
@@ -81,47 +79,47 @@ public class FY21RedAutoStorege extends LinearOpMode {
                 if (barcode.equals("Left")) {
                     //if barcode=left then
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                  //  Mecanum_Drive("Forward",1.0,2000);
                     //slide right 1 square
-                    Mecanum_Drive("Left",1.0,2000);
+                    //Mecanum_Drive("Left",1.0,2000);
                     //place freight on bottom rack
                 }
 
                 if (barcode.equals("right")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_Drive("Right",1.0,2000);
+                   // Mecanum_Drive("Right",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                   // Mecanum_Drive("Forward",1.0,2000);
                     //slide right 1 square
-                    Mecanum_Drive("Left",1.0,2000);
+                    //Mecanum_Drive("Left",1.0,2000);
                     //rotate 90deg clockwise
-                    Mecanum_Turn("Left",1.0,90);
+                  //  Mecanum_Turn("Left",1.0,90);
                     //place freight on top rack
                 }
 
                 if (barcode.equals("center")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_Drive("Right",1.0,2000);
+                    //Mecanum_Drive("Right",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                  //  Mecanum_Drive("Forward",1.0,2000);
                     //rotate 90deg clockwise
-                    Mecanum_Turn("Left",1.0,2000);
+                //    Mecanum_Turn("Left",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+              //      Mecanum_Drive("Forward",1.0,2000);
                     //place freight on middle rack
                 }
 
                 //move back 1.5 squares
-                Mecanum_Drive("Backward",1.0,1500);
+               // Mecanum_Drive("Backward",1.0,1500);
                 //slide right 2 squares
-                Mecanum_Drive("Left",1.0,4000);
+               // Mecanum_Drive("Left",1.0,4000);
                 carouselSpinner.setPower (1);
                 sleep (2000);
                 carouselSpinner.setPower (0);
                 //slide left 1 square
-                Mecanum_Drive("Right",1.0,2000);
+                //Mecanum_Drive("Right",1.0,2000);
             }
         }
 /*
@@ -158,7 +156,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
     }
 
 
-
+/*
     public void Mecanum_Drive(String Dir, double Spd, int Dist) {
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -291,5 +289,5 @@ public class FY21RedAutoStorege extends LinearOpMode {
         bottomLeft.setPower(0);
         bottomRight.setPower(0);
     }
-
+*/
 }
