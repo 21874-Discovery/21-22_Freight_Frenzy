@@ -7,20 +7,15 @@ import com.qualcomm.robotcore.util.Range;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
-
 //@Autonomous(name = "FY21Mecanum", group = "team")
 
 public class FY21MecanumDrive {
    //define motors
-   DcMotor topRight;
-   DcMotor bottomRight;
-   DcMotor topLeft;
-   DcMotor bottomLeft;
+   static DcMotor topRight;
+   static DcMotor bottomRight;
+   static DcMotor topLeft;
+   static DcMotor bottomLeft;
 
-   topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
-   bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
-   topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
-   bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
 
    double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
    //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
@@ -38,7 +33,10 @@ public class FY21MecanumDrive {
 
    public static void Mecanum_drive(String Dir, double Spd, int Dist) {
 
-
+      topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
+      bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
+      topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
+      bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
 
       topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
