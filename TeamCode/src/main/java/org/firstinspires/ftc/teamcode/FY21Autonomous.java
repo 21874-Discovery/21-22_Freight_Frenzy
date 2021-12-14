@@ -34,7 +34,6 @@ public class FY21Autonomous extends LinearOpMode {
    //Rotations per degree
    int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle) / 360);
 
-   public class Function extends FY21MecanumDrive {}
    public void runOpMode() {
       //define hardware map
       duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
@@ -55,7 +54,8 @@ public class FY21Autonomous extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Function.Mecanum_drive ( "Forward", 1, 1000);
+            FY21MecanumDrive.Mecanum_drive ( "Forward", 1, 1000);
+            FY21MecanumDrive.Mecanum_Turn ( "Left", 1, 90);
 
             }
             //turn 90 degrees
