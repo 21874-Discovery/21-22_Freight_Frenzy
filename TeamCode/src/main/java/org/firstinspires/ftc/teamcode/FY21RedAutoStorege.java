@@ -214,7 +214,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
         bottomRight.setPower(Spd);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -222,7 +222,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
          telemetry.update();
          idle();
       }
-       */
+
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);
@@ -243,8 +243,8 @@ public class FY21RedAutoStorege extends LinearOpMode {
         //Rotations per degree
         int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
         int Rotate = (int) Math.round(Deg * TicksPerDegree);
-      /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
-      telemetry.update();*/
+      telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.update();
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -281,7 +281,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
         bottomRight.setPower(SpdT);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -289,7 +289,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
          telemetry.update();
          idle();
       }
-       */
+
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);
