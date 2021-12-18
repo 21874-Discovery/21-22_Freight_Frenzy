@@ -44,9 +44,9 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
                 //Move Forward 0.5
-                Mecanum_Drive("Forward",0.5,1000);
+                Mecanum_drive("Forward",0.5,1000);
                 //turn 90 degrees
-                Mecanum_Turn("Right",1.0,90);
+                Mecanum_Turn("Right",0.5,90);
                 currentstep++;
             }
             if (currentstep == 2) {
@@ -55,19 +55,19 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                     telemetry.update();
                     //If duck middle
                     // slide right 1
-                    Mecanum_Drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2000);
                     //Drop freight
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
                 }
                 //movement code to slide left 1/2
-                Mecanum_Drive("Left",1.0,1000);
+                Mecanum_drive("Left",1.0,1000);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck left
                 }
                 //Slide 3/4 right
-                Mecanum_Drive("Right",1.0,1500);
+                Mecanum_drive("Right",1.0,1500);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck right
                 }
@@ -81,20 +81,20 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 if (barcode.equals("left")) {
                     //if barcode=left then
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2000);
                     //slide right 1 square
-                    Mecanum_Drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2000);
                     //place freight on bottom rack
                 }
 
                 if (barcode.equals("right")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_Drive("Left",1.0,2000);
+                    Mecanum_drive("Left",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2000);
                     //slide right 1 square
-                    Mecanum_Drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2000);
                     //rotate 90deg clockwise
                     Mecanum_Turn("Right",1.0,90);
                     //place freight on top rack
@@ -103,25 +103,25 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 if (barcode.equals("center")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_Drive("Left",1.0,2000);
+                    Mecanum_drive("Left",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2000);
                     //rotate 90deg clockwise
                     Mecanum_Turn("Right",1.0,2000);
                     //move forward 1 square
-                    Mecanum_Drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2000);
                     //place freight on middle rack
                 }
 
                 //move back 1.5 squares
-                Mecanum_Drive("Backward",1.0,1500);
+                Mecanum_drive("Backward",1.0,1500);
                 //slide right 2 squares
-                Mecanum_Drive("Right",1.0,4000);
+                Mecanum_drive("Right",1.0,4000);
                 carouselSpinner.setPower (1);
                 sleep (2000);
                 carouselSpinner.setPower (0);
                 //slide left 1 square
-                Mecanum_Drive("Left",1.0,2000);
+                Mecanum_drive("Left",1.0,2000);
             }
         }
 /*
@@ -159,7 +159,12 @@ public class FY21RedAutoCaresell extends LinearOpMode {
 
 
 
-    public void Mecanum_Drive(String Dir, double Spd, int Dist) {
+    public void Mecanum_drive(String Dir, double Spd, int Dist) {
+
+        topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
+        bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
+        topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
+        bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -168,28 +173,28 @@ public class FY21RedAutoCaresell extends LinearOpMode {
 
         switch (Dir) {
             case "Forward":
-                topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
                 topRight.setDirection(DcMotorSimple.Direction.REVERSE);
                 bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
                 break;
             case "Backward":
-                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                topRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                break;
-            case "Left":
-                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-                topRight.setDirection(DcMotorSimple.Direction.REVERSE);
-                bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
-                break;
-            case "Right":
                 topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
                 topRight.setDirection(DcMotorSimple.Direction.FORWARD);
                 bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
                 bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                break;
+            case "Left":
+                topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+                break;
+            case "Right":
+                topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+                bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+                bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
                 break;
         }
         Dist = Math.abs(Dist);
@@ -210,14 +215,15 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         bottomRight.setPower(Spd);
 
 
-        while (opModeIsActive() && topLeft.isBusy())
-        //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-        {
-            telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
-            telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
-            telemetry.update();
-            idle();
-        }
+      /*while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      {
+         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.update();
+         idle();
+      }
+       */
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);
@@ -237,10 +243,9 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         //DriveTicks * RotationsPerCircle = 360 degrees
         //Rotations per degree
         int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
-
         int Rotate = (int) Math.round(Deg * TicksPerDegree);
-        telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
-        telemetry.update();
+      /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.update();*/
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -277,14 +282,15 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         bottomRight.setPower(SpdT);
 
 
-        while (opModeIsActive() && topLeft.isBusy())
-        //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-        {
-            telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
-            telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
-            telemetry.update();
-            idle();
-        }
+      /*while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      {
+         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.update();
+         idle();
+      }
+       */
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);

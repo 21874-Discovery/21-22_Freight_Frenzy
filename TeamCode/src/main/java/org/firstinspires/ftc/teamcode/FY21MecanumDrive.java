@@ -17,17 +17,7 @@ public class FY21MecanumDrive {
    static DcMotor bottomLeft;
 
 
-   static double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
-   //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
-   static double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
-   static double WheelSize = 4;  //diameter in inches of wheels (the engineers like 4in)
-   static double WheelCircumference = WheelSize*3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
-   static double RotationsPerCircle = RobotCircumference/WheelCircumference;// wheel rotations to turns in complete circle
 
-   static int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
-   //DriveTicks * RotationsPerCircle = 360 degrees
-   //Rotations per degree
-   static int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
 
 
 
@@ -104,7 +94,17 @@ public class FY21MecanumDrive {
    }
 
    public static void Mecanum_Turn(String DirT, double SpdT, int Deg) {
+       double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
+      //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
+       double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
+       double WheelSize = 4;  //diameter in inches of wheels (the engineers like 4in)
+       double WheelCircumference = WheelSize*3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
+       double RotationsPerCircle = RobotCircumference/WheelCircumference;// wheel rotations to turns in complete circle
 
+       int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
+      //DriveTicks * RotationsPerCircle = 360 degrees
+      //Rotations per degree
+       int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
       int Rotate = (int) Math.round(Deg * TicksPerDegree);
       /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();*/

@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous(name = "FY21AutoBlueSpinner2", group = "team")
 
-public class FY21BlueCaresell2 extends LinearOpMode {
+public class FY21BlueCaresellStorage extends LinearOpMode {
    //define motors and stuff
    DcMotor topRight;
    DcMotor bottomRight;

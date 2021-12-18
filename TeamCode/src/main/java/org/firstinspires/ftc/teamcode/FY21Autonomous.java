@@ -17,6 +17,7 @@ public class FY21Autonomous extends LinearOpMode {
    DcMotor carouselSpinner;
    ColorSensor duckScannerLeft; //left
    ColorSensor duckScannerRight; //right
+   DcMotor linearSlide;
    //ColorSensor ColorSensor;
    //define variables
    int currentstep = 0;
