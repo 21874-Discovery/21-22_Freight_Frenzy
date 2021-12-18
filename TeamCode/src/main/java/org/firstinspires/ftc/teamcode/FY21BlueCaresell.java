@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous(name = "FY21AutoBlue", group = "team")
@@ -43,102 +44,84 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward", 1.0, 2000);
+            Mecanum_drive("Forward",0.5,10);
             //turn 90 degrees
-            Mecanum_Turn("Right", 1.0, 180);
-               //drop freight
-            Mecanum_drive("Left", 1.0, 1500);
-            }
+            Mecanum_Turn("Right",0.5,90);
             currentstep++;
-         }//It's over, Anakin. I have the high ground!
+         }
          if (currentstep == 2) {
             if (DCSUPERCOLOR(duckScannerLeft)){
                telemetry.addData("inside currentstep:", currentstep);
                telemetry.update();
                //If duck middle
                // slide right 1
+               Mecanum_drive("Right",1.0,2000);
+               //Drop freight
                //top- full arm exstention
                //mid- half exstention
                //bottom- lowest exstention
             }
-
-            Mecanum_drive("Left", 1.0, 1000);
-            Mecanum_Turn("Left", 1.0, 90);
-            //drop freight
-            Mecanum_drive("Left", 1.0, 2000);
-            Mecanum_drive("Backward", 1.0, 4000);
-            carouselSpinner.setPower(-1);
-            sleep(2000);
-            carouselSpinner.setPower(0);
-            Mecanum_drive("Right", 1.0, 2000);
-
             //movement code to slide left 1/2
+            Mecanum_drive("Left",1.0,1000);
             if (DCSUPERCOLOR(duckScannerLeft)){
                //If duck left
-               Mecanum_drive("Left", 1.0, 1000);
-               Mecanum_Turn("Left", 1.0, 90);
-               //drop freight
-               Mecanum_drive("Left", 1.0, 2000);
-               Mecanum_drive("Backward", 1.0, 4000);
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-               Mecanum_drive("Right", 1.0, 2000);
-
             }
             //Slide 3/4 right
-            if (DCSUPERCOLOR(duckScannerRight)){
-               Mecanum_drive("Left", 1.0, 1000);
-               Mecanum_Turn("Left", 1.0, 90);
-               //drop freight
-               Mecanum_drive("Left", 1.0, 2000);
-               Mecanum_drive("Backward", 1.0, 4000);
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-               Mecanum_drive("Right", 1.0, 2000);
+            Mecanum_drive("Right",1.0,1500);
+            if (DCSUPERCOLOR(duckScannerLeft)){
+               //If duck right
             }
 
 
             //Duck Scanner 1 left side
             //Duck Scanner 2 right side
-            //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
             //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
             //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
             //if duckScanner1 <> yellow and duckScanner2 <> yellow set barcode=center
             if (barcode.equals("left")) {
                //if barcode=left then
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //slide right 1 square
+               Mecanum_drive("Right",1.0,2000);
                //place freight on bottom rack
             }
 
             if (barcode.equals("right")) {
                //if barcode=left then
                //slide left 1 square
+               Mecanum_drive("Left",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //slide right 1 square
+               Mecanum_drive("Right",1.0,2000);
                //rotate 90deg clockwise
+               Mecanum_Turn("Right",1.0,90);
                //place freight on top rack
             }
 
             if (barcode.equals("center")) {
                //if barcode=left then
                //slide left 1 square
+               Mecanum_drive("Left",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //rotate 90deg clockwise
+               Mecanum_Turn("Right",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //place freight on middle rack
             }
 
             //move back 1.5 squares
+            Mecanum_drive("Backward",1.0,1500);
             //slide right 2 squares
-            /*ADD IF NECESSARY ONLY
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-             */
+            Mecanum_drive("Right",1.0,4000);
+            carouselSpinner.setPower (1);
+            sleep (2000);
+            carouselSpinner.setPower (0);
             //slide left 1 square
+            Mecanum_drive("Left",1.0,2000);
          }
       }
 /*
@@ -154,8 +137,7 @@ public class FY21BlueCaresell extends LinearOpMode {
         rightFront.setPower(v2);
         leftRear.setPower(v3);
         rightRear.setPower(v4);*/
-
-
+   }
 
 
    public boolean DCSUPERCOLOR(ColorSensor duck) {
@@ -177,42 +159,143 @@ public class FY21BlueCaresell extends LinearOpMode {
 
 
 
-   public void Mecanum_drive(String Dir, double speed, int distance) {
+   public void Mecanum_drive(String Dir, double Spd, int Dist) {
+
+      topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
+      bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
+      topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
+      bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
 
       topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-      switch (Dir){
+      switch (Dir) {
          case "Forward":
-            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             topRight.setDirection(DcMotorSimple.Direction.REVERSE);
             bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
             break;
          case "Backward":
-            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
-            break;
-         case "Left":
-            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-            topRight.setDirection(DcMotorSimple.Direction.REVERSE);
-            bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
-            break;
-         case "Right":
             topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
             topRight.setDirection(DcMotorSimple.Direction.FORWARD);
             bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
             bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
             break;
+         case "Left":
+            topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+            bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+            break;
+         case "Right":
+            topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+            bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+            break;
       }
-   }
-   public void Mecanum_Turn(String DirT,double SpdT,int Deg){
+      Dist = Math.abs(Dist);
+      topLeft.setTargetPosition(Dist);
+      topRight.setTargetPosition(Dist);
+      bottomLeft.setTargetPosition(Dist);
+      bottomRight.setTargetPosition(Dist);
 
+      topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+      Spd = Range.clip(Spd, 0, 1);
+      topLeft.setPower(Spd);
+      topRight.setPower(Spd);
+      bottomLeft.setPower(Spd);
+      bottomRight.setPower(Spd);
+
+
+      /*while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      {
+         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.update();
+         idle();
+      }
+       */
+      //stop
+      topLeft.setPower(0);
+      topRight.setPower(0);
+      bottomLeft.setPower(0);
+      bottomRight.setPower(0);
+   }
+
+   public void Mecanum_Turn(String DirT, double SpdT, int Deg) {
+      double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
+      //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
+      double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
+      double WheelSize = 4;  //diameter in inches of wheels (the engineers like 4in)
+      double WheelCircumference = WheelSize*3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
+      double RotationsPerCircle = RobotCircumference/WheelCircumference;// wheel rotations to turns in complete circle
+
+      int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
+      //DriveTicks * RotationsPerCircle = 360 degrees
+      //Rotations per degree
+      int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
+      int Rotate = (int) Math.round(Deg * TicksPerDegree);
+      /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.update();*/
+
+      topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+      if (DirT.equals("Left")) {
+         topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+         topRight.setDirection(DcMotorSimple.Direction.REVERSE);
+         bottomLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+         bottomRight.setDirection(DcMotorSimple.Direction.REVERSE);
+      }
+      if (DirT.equals("Right")) {
+         topLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+         topRight.setDirection(DcMotorSimple.Direction.FORWARD);
+         bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+         bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
+      }
+      Rotate = Math.abs(Rotate);
+      topLeft.setTargetPosition(Rotate);
+      topRight.setTargetPosition(Rotate);
+      bottomLeft.setTargetPosition(Rotate);
+      bottomRight.setTargetPosition(Rotate);
+
+      topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+      SpdT = Range.clip(SpdT, 0, 1);
+      topLeft.setPower(SpdT);
+      topRight.setPower(SpdT);
+      bottomLeft.setPower(SpdT);
+      bottomRight.setPower(SpdT);
+
+
+      /*while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      {
+         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.update();
+         idle();
+      }
+       */
+      //stop
+      topLeft.setPower(0);
+      topRight.setPower(0);
+      bottomLeft.setPower(0);
+      bottomRight.setPower(0);
    }
 
 }
