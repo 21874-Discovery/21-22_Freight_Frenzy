@@ -19,7 +19,7 @@ public class FY21Teleop extends LinearOpMode {
     double linearSpeed = 0;
     double spindleSpeed = 0;
     double carouselSpeed = 0;
-    double teamSpin = 1
+    double teamSpin = 1;
 
     @Override
     public void runOpMode() throws InterruptedException {
