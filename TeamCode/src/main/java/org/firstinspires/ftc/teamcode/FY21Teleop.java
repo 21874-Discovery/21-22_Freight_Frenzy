@@ -19,6 +19,7 @@ public class FY21Teleop extends LinearOpMode {
     double linearSpeed = 0;
     double spindleSpeed = 0;
     double carouselSpeed = 0;
+    double teamSpin = 1;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -39,50 +40,32 @@ public class FY21Teleop extends LinearOpMode {
             if (!gamepad1.right_bumper) { //when released, speed will be brought back to 1. Exclamation marks are "not" functions.
                 speed = 1;
             }
-            if (gamepad2.left_bumper) { //when held, will spin the carousel spinner clockwise (blue)
-                carouselSpeed = -1;
+            if (gamepad2.left_stick_button) {
+                teamSpin = -1;
             }
-            if (!gamepad2.left_bumper) { //when released, will stop spinning the carousel spinner.
-                carouselSpeed = 0;
+            if (gamepad2.right_stick_button) {
+                teamSpin = 1;
             }
-
-            if (gamepad2.right_bumper) { //when held, will spin the carousel spinner counter-clockwise (red)
-                carouselSpeed = 1;
+            if (gamepad2.left_bumper) {
+                spindleSpeed = -1;
             }
-            if (!gamepad2.right_bumper) { //when released, will stop spinning the carousel spinner.
-                carouselSpeed = 0;
+            if (gamepad2.right_bumper) {
+                spindleSpeed = 1;
             }
-
-            if (gamepad2.a) {
-                linearSpeed = 0.5;
-            }
-
-            if (!gamepad2.a) {
-                linearSpeed = 0;
-            }
-
-            if (gamepad2.b) {
-                linearSpeed = -0.5;
-            }
-
-            if (!gamepad2.b) {
-                linearSpeed = 0;
-            }
-
-            if (gamepad2.x) {
-                spindleSpeed = 0.5;
-            }
-
-            if (!gamepad2.x) {
-                spindleSpeed = 0;
-            }
-
             if (gamepad2.y) {
-                spindleSpeed = -0.5;
+                //Linear Slide Top Position
             }
-
-            if (!gamepad2.y) {
-                spindleSpeed = 0;
+            if (gamepad2.b) {
+                //Linear Slide Middle Position
+            }
+            if (gamepad2.a) {
+                //Linear Slide Bottom Position
+            }
+            if (gamepad2.x) {
+                carouselSpeed = teamSpin;
+            }
+            if (!gamepad2.x) {
+                carouselSpeed = 0;
             }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
