@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21AutoBlue", group = "team")
+@Autonomous(name = "FY21AutoBlueCarousel", group = "team")
 
 public class FY21BlueCaresell extends LinearOpMode {
    //define motors and stuff
@@ -44,7 +44,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward",0.5,10);
+            //Mecanum_drive("Forward",0.5,10);
             //turn 90 degrees
             Mecanum_Turn("Right",0.5,90);
             currentstep++;
@@ -215,7 +215,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -223,7 +223,7 @@ public class FY21BlueCaresell extends LinearOpMode {
          telemetry.update();
          idle();
       }
-       */
+
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);

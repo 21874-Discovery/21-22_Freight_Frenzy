@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.Range;
 
 //1 centimeter - 0.393701 inches
 
-@Autonomous(name = "FY21AutoBlueSpinner2", group = "team")
+@Autonomous(name = "FY21AutoBlueWarehouse", group = "team")
 
 public class FY21BlueCaresellStorage extends LinearOpMode {
    //define motors and stuff
