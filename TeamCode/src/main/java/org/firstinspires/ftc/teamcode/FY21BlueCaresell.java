@@ -4,6 +4,7 @@ package org.firstinspires.ftc.teamcode;
         import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
         import com.qualcomm.robotcore.hardware.ColorSensor;
         import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
         import com.qualcomm.robotcore.hardware.DcMotorSimple;
         import com.qualcomm.robotcore.util.Range;
 
@@ -155,10 +156,10 @@ public class FY21BlueCaresell extends LinearOpMode {
 
    public void Mecanum_drive(String Dir, double Spd, int Dist) {
 
-      topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      topLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      topRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      bottomLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      bottomRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
 
       switch (Dir) {
          case "Forward":
@@ -192,10 +193,10 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomLeft.setTargetPosition(Dist);
       bottomRight.setTargetPosition(Dist);
 
-      topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      topLeft.setMode(RunMode.RUN_TO_POSITION);
+      topRight.setMode(RunMode.RUN_TO_POSITION);
+      bottomLeft.setMode(RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(RunMode.RUN_TO_POSITION);
 
       Spd = Range.clip(Spd, 0, 1);
       topLeft.setPower(Spd);
@@ -225,10 +226,10 @@ public class FY21BlueCaresell extends LinearOpMode {
       telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();
 
-      topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      topLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      topRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      bottomLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      bottomRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
 
       if (DirT.equals("Left")) {
          topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -248,10 +249,10 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomLeft.setTargetPosition(Rotate);
       bottomRight.setTargetPosition(Rotate);
 
-      topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      topLeft.setMode(RunMode.RUN_TO_POSITION);
+      topRight.setMode(RunMode.RUN_TO_POSITION);
+      bottomLeft.setMode(RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(RunMode.RUN_TO_POSITION);
 
       SpdT = Range.clip(SpdT, 0, 1);
       topLeft.setPower(SpdT);
