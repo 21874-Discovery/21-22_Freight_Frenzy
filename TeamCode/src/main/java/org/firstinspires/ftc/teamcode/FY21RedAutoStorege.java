@@ -43,17 +43,17 @@ public class FY21RedAutoStorege extends LinearOpMode {
             if (currentstep == 1) {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
-                //Move Forward 0.5
-                //Mecanum_Drive("Forward",0.5,1000);
+                //Move right 90
+                Mecanum_Turn("Right",1.0,90);
                 //turn 90 degrees
-                //Mecanum_Turn("Left",1.0,90);
+                Mecanum_Drive("Forward",1.0,3000);
                 currentstep++;
             }
             if (currentstep == 2) {
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     telemetry.addData("inside currentstep:", currentstep);
                     telemetry.update();
-                    //If duck middle
+                   //If duck middle
                     // slide right 1
                   //  Mecanum_Drive("Left",1.0,2000);
                     //Drop freight
@@ -158,7 +158,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
     }
 
 
-    public void Mecanum_drive(String Dir, double Spd, int Dist) {
+    public void Mecanum_Drive(String Dir, double Spd, int Dist) {
 
         topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
         bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1

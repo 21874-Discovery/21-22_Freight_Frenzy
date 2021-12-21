@@ -24,6 +24,19 @@ public class FY21RedAutoCaresell extends LinearOpMode {
     int currentstep = 0;
     String barcode = "none";
 
+    double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
+    //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
+    double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
+    double WheelSize = 4;  //diameter in inches of wheels (the engineers like 4in)
+    double WheelCircumference = WheelSize*3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
+    double RotationsPerCircle = RobotCircumference/WheelCircumference;// wheel rotations to turns in complete circle
+
+    int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
+    //DriveTicks * RotationsPerCircle = 360 degrees
+    //Rotations per degree
+    int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
+
+
     public void runOpMode() {
         //define hardware map
         duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
@@ -51,7 +64,7 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
                 //Move Forward 0.5
-                Mecanum_drive("Forward",0.5,1000);
+                Mecanum_drive("Forward",0.5,250);
                 //turn 90 degrees
                 Mecanum_Turn("Right",0.5,90);
                 currentstep++;
@@ -76,7 +89,9 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 //Slide 3/4 right
                 Mecanum_drive("Right",1.0,1500);
                 if (DCSUPERCOLOR(duckScannerLeft)){
-                    //If duck right
+                    //If duck
+
+
                 }
 
 
