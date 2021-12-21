@@ -44,102 +44,84 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward", 1.0, 2000);
+            Mecanum_drive("Forward",0.5,10);
             //turn 90 degrees
-            Mecanum_Turn("Right", 1.0, 180);
-               //drop freight
-            Mecanum_drive("Left", 1.0, 1500);
-            }
+            Mecanum_Turn("Right",0.5,90);
             currentstep++;
-         }//It's over, Anakin. I have the high ground!
+         }
          if (currentstep == 2) {
             if (DCSUPERCOLOR(duckScannerLeft)){
                telemetry.addData("inside currentstep:", currentstep);
                telemetry.update();
                //If duck middle
                // slide right 1
+               Mecanum_drive("Right",1.0,2000);
+               //Drop freight
                //top- full arm exstention
                //mid- half exstention
                //bottom- lowest exstention
             }
-
-            Mecanum_drive("Left", 1.0, 1000);
-            Mecanum_Turn("Left", 1.0, 90);
-            //drop freight
-            Mecanum_drive("Left", 1.0, 2000);
-            Mecanum_drive("Backward", 1.0, 4000);
-            carouselSpinner.setPower(-1);
-            sleep(2000);
-            carouselSpinner.setPower(0);
-            Mecanum_drive("Right", 1.0, 2000);
-
             //movement code to slide left 1/2
+            Mecanum_drive("Left",1.0,1000);
             if (DCSUPERCOLOR(duckScannerLeft)){
                //If duck left
-               Mecanum_drive("Left", 1.0, 1000);
-               Mecanum_Turn("Left", 1.0, 90);
-               //drop freight
-               Mecanum_drive("Left", 1.0, 2000);
-               Mecanum_drive("Backward", 1.0, 4000);
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-               Mecanum_drive("Right", 1.0, 2000);
-
             }
             //Slide 3/4 right
-            if (DCSUPERCOLOR(duckScannerRight)){
-               Mecanum_drive("Left", 1.0, 1000);
-               Mecanum_Turn("Left", 1.0, 90);
-               //drop freight
-               Mecanum_drive("Left", 1.0, 2000);
-               Mecanum_drive("Backward", 1.0, 4000);
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-               Mecanum_drive("Right", 1.0, 2000);
+            Mecanum_drive("Right",1.0,1500);
+            if (DCSUPERCOLOR(duckScannerLeft)){
+               //If duck right
             }
 
 
             //Duck Scanner 1 left side
             //Duck Scanner 2 right side
-            //MOVE, SCAN, MOVE, SCAN, MOVE, SCAN
             //if duckScanner1 <> yellow and duckScanner2 = yellow set barcode=right
             //if duckScanner1 = yellow and duckScanner2 <> yellow set barcode=left
             //if duckScanner1 <> yellow and duckScanner2 <> yellow set barcode=center
             if (barcode.equals("left")) {
                //if barcode=left then
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //slide right 1 square
+               Mecanum_drive("Right",1.0,2000);
                //place freight on bottom rack
             }
 
             if (barcode.equals("right")) {
                //if barcode=left then
                //slide left 1 square
+               Mecanum_drive("Left",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //slide right 1 square
+               Mecanum_drive("Right",1.0,2000);
                //rotate 90deg clockwise
+               Mecanum_Turn("Right",1.0,90);
                //place freight on top rack
             }
 
             if (barcode.equals("center")) {
                //if barcode=left then
                //slide left 1 square
+               Mecanum_drive("Left",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //rotate 90deg clockwise
+               Mecanum_Turn("Right",1.0,2000);
                //move forward 1 square
+               Mecanum_drive("Forward",1.0,2000);
                //place freight on middle rack
             }
 
             //move back 1.5 squares
+            Mecanum_drive("Backward",1.0,1500);
             //slide right 2 squares
-            /*ADD IF NECESSARY ONLY
-               carouselSpinner.setPower(-1);
-               sleep(2000);
-               carouselSpinner.setPower(0);
-             */
+            Mecanum_drive("Right",1.0,4000);
+            carouselSpinner.setPower (1);
+            sleep (2000);
+            carouselSpinner.setPower (0);
             //slide left 1 square
+            Mecanum_drive("Left",1.0,2000);
          }
       }
 /*
@@ -155,8 +137,7 @@ public class FY21BlueCaresell extends LinearOpMode {
         rightFront.setPower(v2);
         leftRear.setPower(v3);
         rightRear.setPower(v4);*/
-
-
+   }
 
 
    public boolean DCSUPERCOLOR(ColorSensor duck) {
@@ -234,15 +215,15 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-      while (opModeIsActive() && topLeft.isBusy())
-      //topLeft.getCurrentPosition() < topLeft.getTargetPosition())
+      /*while (opModeIsActive() && topLeft.isBusy())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.update();
          idle();
       }
-
+       */
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);
@@ -263,8 +244,8 @@ public class FY21BlueCaresell extends LinearOpMode {
       //Rotations per degree
       int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
       int Rotate = (int) Math.round(Deg * TicksPerDegree);
-      telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
-      telemetry.update();
+      /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.update();*/
 
       topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -300,9 +281,8 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomLeft.setPower(SpdT);
       bottomRight.setPower(SpdT);
 
-
       while (opModeIsActive() && topLeft.isBusy())
-      //topLeft.getCurrentPosition() < topLeft.getTargetPosition())
+      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
