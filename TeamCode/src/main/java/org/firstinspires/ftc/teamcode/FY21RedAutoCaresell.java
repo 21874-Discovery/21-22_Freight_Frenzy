@@ -29,10 +29,17 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
         duckScannerRight = hardwareMap.colorSensor.get("DSR"); //Control Hub I2C bus 3
         topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
+
         bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2++
+
+
+        topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
         while (opModeIsActive()) {
 
@@ -215,15 +222,15 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         bottomRight.setPower(Spd);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
-      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      while (opModeIsActive() && topLeft.isBusy())
+          //topLeft.getCurrentPosition() < topLeft.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.update();
          idle();
       }
-       */
+
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);
@@ -244,8 +251,8 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         //Rotations per degree
         int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
         int Rotate = (int) Math.round(Deg * TicksPerDegree);
-      /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
-      telemetry.update();*/
+      telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.update();
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -282,15 +289,15 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         bottomRight.setPower(SpdT);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
-      //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
+      while (opModeIsActive() && topLeft.isBusy())
+      //topLeft.getCurrentPosition() < topLeft.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.update();
          idle();
       }
-       */
+
         //stop
         topLeft.setPower(0);
         topRight.setPower(0);
