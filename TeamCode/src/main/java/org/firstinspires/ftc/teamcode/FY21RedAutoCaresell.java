@@ -64,7 +64,7 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
                 //Move Forward 0.5
-                Mecanum_drive("Forward",0.5,250);
+                Mecanum_drive("Forward",0.5,25);
                 //turn 90 degrees
                 Mecanum_Turn("Right",0.5,90);
                 currentstep++;
@@ -75,19 +75,19 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                     telemetry.update();
                     //If duck middle
                     // slide right 1
-                    Mecanum_drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2);
                     //Drop freight
                     //top- full arm exstention
                     //mid- half exstention
                     //bottom- lowest exstention
                 }
                 //movement code to slide left 1/2
-                Mecanum_drive("Left",1.0,1000);
+                Mecanum_drive("Left",1.0,1);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck left
                 }
                 //Slide 3/4 right
-                Mecanum_drive("Right",1.0,1500);
+                Mecanum_drive("Right",1.0,15);
                 if (DCSUPERCOLOR(duckScannerLeft)){
                     //If duck
 
@@ -103,20 +103,20 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 if (barcode.equals("left")) {
                     //if barcode=left then
                     //move forward 1 square
-                    Mecanum_drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2);
                     //slide right 1 square
-                    Mecanum_drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2);
                     //place freight on bottom rack
                 }
 
                 if (barcode.equals("right")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_drive("Left",1.0,2000);
+                    Mecanum_drive("Left",1.0,2);
                     //move forward 1 square
-                    Mecanum_drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2);
                     //slide right 1 square
-                    Mecanum_drive("Right",1.0,2000);
+                    Mecanum_drive("Right",1.0,2);
                     //rotate 90deg clockwise
                     Mecanum_Turn("Right",1.0,90);
                     //place freight on top rack
@@ -125,25 +125,25 @@ public class FY21RedAutoCaresell extends LinearOpMode {
                 if (barcode.equals("center")) {
                     //if barcode=left then
                     //slide left 1 square
-                    Mecanum_drive("Left",1.0,2000);
+                    Mecanum_drive("Left",1.0,2);
                     //move forward 1 square
-                    Mecanum_drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2);
                     //rotate 90deg clockwise
-                    Mecanum_Turn("Right",1.0,2000);
+                    Mecanum_Turn("Right",1.0,90);
                     //move forward 1 square
-                    Mecanum_drive("Forward",1.0,2000);
+                    Mecanum_drive("Forward",1.0,2);
                     //place freight on middle rack
                 }
 
                 //move back 1.5 squares
-                Mecanum_drive("Backward",1.0,1500);
+                Mecanum_drive("Backward",1.0,15);
                 //slide right 2 squares
-                Mecanum_drive("Right",1.0,4000);
+                Mecanum_drive("Right",1.0,4);
                 carouselSpinner.setPower (1);
                 sleep (2000);
                 carouselSpinner.setPower (0);
                 //slide left 1 square
-                Mecanum_drive("Left",1.0,2000);
+                Mecanum_drive("Left",1.0,2);
             }
         }
 /*
