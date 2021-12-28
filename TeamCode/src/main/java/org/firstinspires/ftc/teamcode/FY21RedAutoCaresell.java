@@ -264,8 +264,8 @@ public class FY21RedAutoCaresell extends LinearOpMode {
     public void Mecanum_Forward(double distance, double speed) {
         int topLeftTarget = (int) (topLeft.getCurrentPosition() + (distance * COUNTS_PER_INCH));
         int topRightTarget = (int) (topRight.getCurrentPosition() + (distance * COUNTS_PER_INCH));
-        int bottomLeftTarget = (int) (bottomLeft.getCurrentPosition() + (distance * COUNTS_PER_INCH));
-        int bottomRightTarget = (int) (bottomRight.getCurrentPosition() + (distance * COUNTS_PER_INCH));
+        int bottomLeftTarget = (int) (bottomLeft.getCurrentPosition() - (distance * COUNTS_PER_INCH));
+        int bottomRightTarget = (int) (bottomRight.getCurrentPosition() - (distance * COUNTS_PER_INCH));
 
         if (opModeIsActive()) {
             topLeft.setTargetPosition(topLeftTarget);

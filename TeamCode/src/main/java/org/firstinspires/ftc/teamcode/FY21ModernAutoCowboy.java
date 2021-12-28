@@ -165,6 +165,7 @@ public class FY21ModernAutoCowboy extends LinearOpMode {
         bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+
         switch (Dir) {
             case "Forward":
                 topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
