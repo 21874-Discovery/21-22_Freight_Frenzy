@@ -32,7 +32,7 @@ public class FY21BlueCaresell extends LinearOpMode {
    double WheelCircumference = WheelSize*3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
    double RotationsPerCircle = RobotCircumference/WheelCircumference;// wheel rotations to turns in complete circle
 
-   int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
+   int DriveTicks = 1440;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
    //DriveTicks * RotationsPerCircle = 360 degrees
    //Rotations per degree
    int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
@@ -58,7 +58,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward", 0.5, 10);
+
             //turn 90 degrees
             Mecanum_Turn("Right",0.5,90);
             currentstep++;
@@ -192,7 +192,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       topRight.setTargetPosition(Dist);
       bottomLeft.setTargetPosition(Dist);
       bottomRight.setTargetPosition(Dist);
-
+//the chicken with sand in it
       topLeft.setMode(RunMode.RUN_TO_POSITION);
       topRight.setMode(RunMode.RUN_TO_POSITION);
       bottomLeft.setMode(RunMode.RUN_TO_POSITION);
@@ -230,6 +230,11 @@ public class FY21BlueCaresell extends LinearOpMode {
       topRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
       bottomRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
+
+      topLeft.setMode(RunMode.RUN_USING_ENCODER);
+      topRight.setMode(RunMode.RUN_USING_ENCODER);
+      bottomLeft.setMode(RunMode.RUN_USING_ENCODER);
+      bottomRight.setMode(RunMode.RUN_USING_ENCODER);
 
       if (DirT.equals("Left")) {
          topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
