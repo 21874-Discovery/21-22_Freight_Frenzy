@@ -192,7 +192,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       topRight.setTargetPosition(Dist);
       bottomLeft.setTargetPosition(Dist);
       bottomRight.setTargetPosition(Dist);
-
+//the chicken with sand in it
       topLeft.setMode(RunMode.RUN_TO_POSITION);
       topRight.setMode(RunMode.RUN_TO_POSITION);
       bottomLeft.setMode(RunMode.RUN_TO_POSITION);
@@ -230,6 +230,11 @@ public class FY21BlueCaresell extends LinearOpMode {
       topRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
       bottomRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
+
+      topLeft.setMode(RunMode.RUN_USING_ENCODER);
+      topRight.setMode(RunMode.RUN_USING_ENCODER);
+      bottomLeft.setMode(RunMode.RUN_USING_ENCODER);
+      bottomRight.setMode(RunMode.RUN_USING_ENCODER);
 
       if (DirT.equals("Left")) {
          topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
