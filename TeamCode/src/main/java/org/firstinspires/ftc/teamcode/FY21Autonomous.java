@@ -30,7 +30,7 @@ public class FY21Autonomous extends LinearOpMode {
    double WheelCircumference = WheelSize * 3.14; //Circumference (d * pi) of wheel (distance wheel travels for 1 rotation)
    double RotationsPerCircle = RobotCircumference / WheelCircumference;// wheel rotations to turns in complete circle
 
-   int DriveTicks = 480;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
+   int DriveTicks = 1440;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
    //DriveTicks * RotationsPerCircle = 360 degrees
    //Rotations per degree
    int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle) / 360);

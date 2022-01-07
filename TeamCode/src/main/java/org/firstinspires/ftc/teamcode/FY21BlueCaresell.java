@@ -224,6 +224,12 @@ public class FY21BlueCaresell extends LinearOpMode {
 
       int Rotate = (int) Math.round(Deg * TicksPerDegree);
       telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+
+      //Added
+      telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+      telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+
+
       telemetry.update();
 
       topLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
