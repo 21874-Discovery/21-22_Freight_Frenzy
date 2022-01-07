@@ -58,7 +58,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward", 0.5, 10);
+
             //turn 90 degrees
             Mecanum_Turn("Right",0.5,90);
             currentstep++;
