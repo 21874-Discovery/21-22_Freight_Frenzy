@@ -243,7 +243,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
         //Rotations per degree
         int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
         int Rotate = (int) Math.round(Deg * TicksPerDegree);
-      telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
+      telemetry.addData("Rotating", Rotate + " ticks or " + Deg + " degrees");
       telemetry.update();
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

@@ -44,7 +44,6 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
         duckScannerRight = hardwareMap.colorSensor.get("DSR"); //Control Hub I2C bus 3
         topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
-
         bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
