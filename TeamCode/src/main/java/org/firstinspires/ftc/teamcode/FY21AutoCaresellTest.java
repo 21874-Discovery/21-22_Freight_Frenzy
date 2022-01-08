@@ -8,8 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
-
-@Autonomous(name = "FY21AutoTest2", group = "team")
+@Autonomous(name = "FY21AutoBlue2", group = "team")
 
 public class FY21AutoCaresellTest extends LinearOpMode {
    //define motors and stuff
@@ -47,6 +46,8 @@ public class FY21AutoCaresellTest extends LinearOpMode {
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
       carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
+
+
       waitForStart();
       while (opModeIsActive()) {
 
@@ -55,24 +56,15 @@ public class FY21AutoCaresellTest extends LinearOpMode {
          }
 
          if (currentstep == 1) {
-            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+            telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
             telemetry.update();
             //Move Forward 0.5
-            if (1==1) {
-               sleep(10000);
-               Mecanum_drive("Forward", 0.5, 10);
-               sleep(10000);
-               //turn 90 degrees
-               Mecanum_Turn("Right",0.5,90);
-               bottomRight.setMode(RunMode.RUN_TO_POSITION);
-               currentstep++;
-            }
-            sleep(10000);
-            Mecanum_drive("Forward", 0.5, 10);
-            sleep(10000);
+           // Mecanum_drive("Forward",0.5, 10);
             //turn 90 degrees
-            Mecanum_Turn("Right",0.5,90);
-            currentstep++;
+           // Mecanum_Turn("Right",0.5,90);
+           //
+            // currentstep++;
          }
          if (currentstep == 2) {
             if (DCSUPERCOLOR(duckScannerLeft)) {
@@ -243,10 +235,10 @@ public class FY21AutoCaresellTest extends LinearOpMode {
 
       telemetry.update();
 
-      topLeft.setMode(RunMode.RUN_USING_ENCODER);
-      topRight.setMode(RunMode.RUN_USING_ENCODER);
-      bottomLeft.setMode(RunMode.RUN_USING_ENCODER);
-      bottomRight.setMode(RunMode.RUN_USING_ENCODER);
+      topLeft.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      topRight.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      bottomLeft.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      bottomRight.setMode(RunMode.RUN_WITHOUT_ENCODER);
 
       topLeft.setMode(RunMode.RUN_USING_ENCODER);
       topRight.setMode(RunMode.RUN_USING_ENCODER);

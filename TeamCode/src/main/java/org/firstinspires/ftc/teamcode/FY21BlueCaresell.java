@@ -1,18 +1,24 @@
 package org.firstinspires.ftc.teamcode;
 
-        import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-        import com.qualcomm.robotcore.hardware.ColorSensor;
-        import com.qualcomm.robotcore.hardware.DcMotor;
-        import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
-        import com.qualcomm.robotcore.hardware.DcMotorSimple;
-        import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+
+
 
 
 @Autonomous(name = "FY21AutoBlueCarousel", group = "team")
 
 public class FY21BlueCaresell extends LinearOpMode {
    //define motors and stuff
+   private ElapsedTime runtime = new ElapsedTime();
+   private DcMotor topLeft;
+   private DcMotor topRight;
    DcMotor topRight;
    DcMotor bottomRight;
    DcMotor topLeft;
@@ -43,10 +49,12 @@ public class FY21BlueCaresell extends LinearOpMode {
       duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
       duckScannerRight = hardwareMap.colorSensor.get("DSR"); //Control Hub I2C bus 3
       topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
-      bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
+      topRight = hardwareMap.; //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
+      bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
       carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
+
       waitForStart();
       while (opModeIsActive()) {
 
