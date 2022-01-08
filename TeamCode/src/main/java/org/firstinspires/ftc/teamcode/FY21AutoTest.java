@@ -117,17 +117,17 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-     /* while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
-         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
-         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+         telemetry.addData("encoder-fwd-TL", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-TR", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.addData("encoder-fwd-BL", bottomLeft.getCurrentPosition() + "busy=" + bottomLeft.isBusy());
          telemetry.addData("encoder-fwd-BR", bottomRight.getCurrentPosition() + "busy=" + bottomRight.isBusy());
          telemetry.update();
          idle();
       }
-*/
+
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);
@@ -186,7 +186,7 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(SpdT);
 
 
-      /*while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -194,7 +194,7 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.update();
          idle();
       }
-       */
+
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);
