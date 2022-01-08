@@ -151,10 +151,10 @@ public class FY21AutoTest extends LinearOpMode {
       /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();*/
 
-      topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      /*topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);*/
 
       if (DirT.equals("Left")) {
          topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
