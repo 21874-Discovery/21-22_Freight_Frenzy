@@ -1,17 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
-        import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-        import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-        import com.qualcomm.robotcore.hardware.ColorSensor;
-        import com.qualcomm.robotcore.hardware.DcMotor;
-        import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
-        import com.qualcomm.robotcore.hardware.DcMotorSimple;
-        import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous(name = "FY21AutoBlueCarousel", group = "team")
 
-public class FY21BlueCaresell extends LinearOpMode {
+public class FY21AutoCaresellTest extends LinearOpMode {
    //define motors and stuff
    DcMotor topRight;
    DcMotor bottomRight;
@@ -58,7 +58,9 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward",0.5, 10);
+            sleep(10000);
+            Mecanum_drive("Forward", 0.5, 10);
+            sleep(10000);
             //turn 90 degrees
             Mecanum_Turn("Right",0.5,90);
             currentstep++;
@@ -270,6 +272,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       topRight.setPower(SpdT);
       bottomLeft.setPower(SpdT);
       bottomRight.setPower(SpdT);
+
 
       while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
