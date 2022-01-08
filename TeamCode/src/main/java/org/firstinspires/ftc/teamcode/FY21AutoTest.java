@@ -56,11 +56,11 @@ public class FY21AutoTest extends LinearOpMode {
 
          if (currentstep == 1) {
            */
-         /*telemetry.addData("inside currentstep:", currentstep);
+         telemetry.addData("inside currentstep:", currentstep);
          telemetry.update();
          //Move Forward 0.5
          Mecanum_drive("Forward", 1, 1000);
-         Mecanum_Turn("Left", 1, 90);*/
+         Mecanum_Turn("Left", 1, 90);
 
       }
    }
@@ -117,7 +117,7 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-     /* while (opModeIsActive() && topLeft.isBusy())
+      while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -127,7 +127,7 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.update();
          idle();
       }
-*/
+
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);
@@ -151,10 +151,10 @@ public class FY21AutoTest extends LinearOpMode {
       /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();*/
 
-      topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      /*topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+      bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);*/
 
       if (DirT.equals("Left")) {
          topLeft.setDirection(DcMotorSimple.Direction.REVERSE);
