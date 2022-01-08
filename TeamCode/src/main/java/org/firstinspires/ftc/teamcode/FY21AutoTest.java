@@ -56,11 +56,11 @@ public class FY21AutoTest extends LinearOpMode {
 
          if (currentstep == 1) {
            */
-         telemetry.addData("inside currentstep:", currentstep);
+         /*telemetry.addData("inside currentstep:", currentstep);
          telemetry.update();
          //Move Forward 0.5
          Mecanum_drive("Forward", 1, 1000);
-         Mecanum_Turn("Left", 1, 90);
+         Mecanum_Turn("Left", 1, 90);*/
 
       }
    }
@@ -117,7 +117,7 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-      while (opModeIsActive() && topLeft.isBusy())
+     /* while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
@@ -127,7 +127,7 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.update();
          idle();
       }
-
+*/
       //stop
       topLeft.setPower(0);
       topRight.setPower(0);
