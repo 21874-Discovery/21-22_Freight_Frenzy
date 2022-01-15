@@ -60,11 +60,10 @@ public class FY21AutoCaresellTest extends LinearOpMode {
             telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
             telemetry.update();
             //Move Forward 0.5
-           // Mecanum_drive("Forward",0.5, 10);
+           Mecanum_drive("Forward",0.5, 10);
             //turn 90 degrees
-           // Mecanum_Turn("Right",0.5,90);
-           //
-            // currentstep++;
+           Mecanum_Turn("Right",0.5,90);
+           currentstep++;
          }
          if (currentstep == 2) {
             if (DCSUPERCOLOR(duckScannerLeft)) {

@@ -21,7 +21,7 @@ public class FY21TeleOpTesting extends LinearOpMode {
     double carouselSpeed = 0;
     double teamSpin = 1;
     double linearPosition = 1; //1 is the lowest position, and 3 is the top position. As you would expect, 2 is the middle position.
-    long linearWait/* = unknown*/;
+    long linearWait = 500;
     long linearWait2 = (linearWait * 2);
 
     @Override

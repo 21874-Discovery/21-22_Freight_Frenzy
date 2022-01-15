@@ -21,7 +21,7 @@ public class FY21Teleop extends LinearOpMode {
     double carouselSpeed = 0;
     double teamSpin = 1;
     double linearPosition = 1;
-    long linearWait/* = unknown*/;
+    long linearWait = 500;
     long linearWait2 = (linearWait * 2);
 
     @Override
