@@ -6,19 +6,12 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotor.RunMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
+@Autonomous(name = "FY21AutoBlue2", group = "team")
 
-
-
-@Autonomous(name = "FY21AutoBlueCarousel", group = "team")
-
-public class FY21BlueCaresell extends LinearOpMode {
+public class FY21AutoCaresellTest extends LinearOpMode {
    //define motors and stuff
-   private ElapsedTime runtime = new ElapsedTime();
-   private DcMotor topLeft;
-   private DcMotor topRight;
    DcMotor topRight;
    DcMotor bottomRight;
    DcMotor topLeft;
@@ -49,11 +42,11 @@ public class FY21BlueCaresell extends LinearOpMode {
       duckScannerLeft = hardwareMap.colorSensor.get("DSL"); //Extension Hub I2C bus 3
       duckScannerRight = hardwareMap.colorSensor.get("DSR"); //Control Hub I2C bus 3
       topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
-      topRight = hardwareMap.; //Control Hub Port 1
-      topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
+      topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
       carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
+
 
       waitForStart();
       while (opModeIsActive()) {
@@ -63,13 +56,15 @@ public class FY21BlueCaresell extends LinearOpMode {
          }
 
          if (currentstep == 1) {
-            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+            telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
             telemetry.update();
             //Move Forward 0.5
-            Mecanum_drive("Forward",0.5, 10);
+           // Mecanum_drive("Forward",0.5, 10);
             //turn 90 degrees
-            Mecanum_Turn("Right",0.5,90);
-            currentstep++;
+           // Mecanum_Turn("Right",0.5,90);
+           //
+            // currentstep++;
          }
          if (currentstep == 2) {
             if (DCSUPERCOLOR(duckScannerLeft)) {
@@ -240,10 +235,10 @@ public class FY21BlueCaresell extends LinearOpMode {
 
       telemetry.update();
 
-      topLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
-      topRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
-      bottomLeft.setMode(RunMode.STOP_AND_RESET_ENCODER);
-      bottomRight.setMode(RunMode.STOP_AND_RESET_ENCODER);
+      topLeft.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      topRight.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      bottomLeft.setMode(RunMode.RUN_WITHOUT_ENCODER);
+      bottomRight.setMode(RunMode.RUN_WITHOUT_ENCODER);
 
       topLeft.setMode(RunMode.RUN_USING_ENCODER);
       topRight.setMode(RunMode.RUN_USING_ENCODER);
@@ -273,15 +268,18 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomLeft.setMode(RunMode.RUN_TO_POSITION);
       bottomRight.setMode(RunMode.RUN_TO_POSITION);
 
-      SpdT = Range.clip(SpdT, 0, 1);
+      SpdT = Range.clip(SpdT, 1, 2);
       topLeft.setPower(SpdT);
       topRight.setPower(SpdT);
       bottomLeft.setPower(SpdT);
       bottomRight.setPower(SpdT);
 
+
       while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
       {
+         telemetry.addData("encoder-fwd-left", topLeft.getTargetPosition() + "busy2=" + topLeft.isBusy());
+         telemetry.addData("encoder-fwd-right", topLeft.getTargetPosition() + "busy2=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.update();
