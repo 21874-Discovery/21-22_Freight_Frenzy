@@ -20,6 +20,9 @@ public class FY21Teleop extends LinearOpMode {
     double spindleSpeed = 0;
     double carouselSpeed = 0;
     double teamSpin = 1;
+    double linearPosition = 1;
+    long linearWait/* = unknown*/;
+    long linearWait2 = (linearWait * 2);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -53,13 +56,49 @@ public class FY21Teleop extends LinearOpMode {
                 spindleSpeed = 1;
             }
             if (gamepad2.y) {
-                //Linear Slide Top Position
+                if (linearPosition != 3){
+                    if (linearPosition == 1){
+                        linearPosition = 3;
+                        linearSpeed = -1;
+                        sleep (linearWait2);
+                        linearSpeed = 0;
+                    }else{
+                        linearPosition = 3;
+                        linearSpeed = -1;
+                        sleep (linearWait);
+                        linearSpeed = 0;
+                    }
+                }
             }
             if (gamepad2.b) {
-                //Linear Slide Middle Position
+                if (linearPosition != 2){
+                    if (linearPosition == 1){
+                        linearPosition = 2;
+                        linearSpeed = -1;
+                        sleep (linearWait);
+                        linearSpeed = 0;
+                    }else{
+                        linearPosition = 2;
+                        linearSpeed = 1;
+                        sleep (linearWait);
+                        linearSpeed = 0;
+                    }
+                }
             }
             if (gamepad2.a) {
-                //Linear Slide Bottom Position
+                if (linearPosition != 1){
+                    if (linearPosition == 3){
+                        linearPosition = 1;
+                        linearSpeed = 1;
+                        sleep (linearWait2);
+                        linearSpeed = 0;
+                    }else{
+                        linearPosition = 1;
+                        linearSpeed = 1;
+                        sleep (linearWait);
+                        linearSpeed = 0;
+                    }
+                }
             }
             if (gamepad2.x) {
                 carouselSpeed = teamSpin;
