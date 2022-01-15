@@ -51,6 +51,12 @@ public class FY21TeleOpTesting extends LinearOpMode {
             if (gamepad2.right_bumper) {
                 spindleSpeed = 1;
             }
+            if (!gamepad2.left_bumper) {
+                spindleSpeed = 0;
+            }
+            if (!gamepad2.right_bumper) {
+                spindleSpeed = 0;
+            }
 
             if (gamepad2.x) {
                 carouselSpeed = teamSpin;
