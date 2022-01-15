@@ -83,6 +83,7 @@ public class FY21Teleop extends LinearOpMode {
                         Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
+                    
                 }
             }
             if (gamepad2.a) {
