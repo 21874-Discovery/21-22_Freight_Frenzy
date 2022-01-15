@@ -60,12 +60,12 @@ public class FY21Teleop extends LinearOpMode {
                     if (linearPosition == 1){
                         linearPosition = 3;
                         linearSpeed = -1;
-                        sleep (linearWait2);
+                        Thread.sleep (linearWait2);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 3;
                         linearSpeed = -1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }
@@ -75,12 +75,12 @@ public class FY21Teleop extends LinearOpMode {
                     if (linearPosition == 1){
                         linearPosition = 2;
                         linearSpeed = -1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 2;
                         linearSpeed = 1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }
@@ -90,12 +90,12 @@ public class FY21Teleop extends LinearOpMode {
                     if (linearPosition == 3){
                         linearPosition = 1;
                         linearSpeed = 1;
-                        sleep (linearWait2);
+                        Thread.sleep (linearWait2);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 1;
                         linearSpeed = 1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }

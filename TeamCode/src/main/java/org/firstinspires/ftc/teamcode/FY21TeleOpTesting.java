@@ -20,7 +20,7 @@ public class FY21TeleOpTesting extends LinearOpMode {
     double spindleSpeed = 0;
     double carouselSpeed = 0;
     double teamSpin = 1;
-    double linearPosition = 1;
+    double linearPosition = 1; //1 is the lowest position, and 3 is the top position. As you would expect, 2 is the middle position.
     long linearWait/* = unknown*/;
     long linearWait2 = (linearWait * 2);
 
@@ -56,46 +56,46 @@ public class FY21TeleOpTesting extends LinearOpMode {
                 spindleSpeed = 1;
             }
             if (gamepad2.y) {
-                if (linearPosition != 3){
-                    if (linearPosition == 1){
+                if (linearPosition != 3){ //checks if the position is not already 3...
+                    if (linearPosition == 1){//...and then checks if the position is 1. Runs this function if it is, runs the other one if not.
                         linearPosition = 3;
                         linearSpeed = -1;
-                        sleep (linearWait2);
+                        Thread.sleep (linearWait2);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 3;
                         linearSpeed = -1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }
             }
             if (gamepad2.b) {
-                if (linearPosition != 2){
-                    if (linearPosition == 1){
+                if (linearPosition != 2){//checks if the position is not already 2...
+                    if (linearPosition == 1){//...and then checks if the position is 1. Runs this function if it is, runs the other one if not.
                         linearPosition = 2;
                         linearSpeed = -1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 2;
                         linearSpeed = 1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }
             }
             if (gamepad2.a) {
-                if (linearPosition != 1){
-                    if (linearPosition == 3){
+                if (linearPosition != 1){//checks if the position is not already 1...
+                    if (linearPosition == 3){//...and then checks if the position is 3. Runs this function if it is, runs the other one if not.
                         linearPosition = 1;
                         linearSpeed = 1;
-                        sleep (linearWait2);
+                        Thread.sleep (linearWait2);
                         linearSpeed = 0;
                     }else{
                         linearPosition = 1;
                         linearSpeed = 1;
-                        sleep (linearWait);
+                        Thread.sleep (linearWait);
                         linearSpeed = 0;
                     }
                 }
