@@ -40,12 +40,12 @@ public class FY21AutoTest extends LinearOpMode {
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+/*
       topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+*/
 
       waitForStart();
       while (opModeIsActive()) {
@@ -59,19 +59,21 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.addData("inside currentstep:", currentstep);
          telemetry.update();
          //Move Forward 0.5
-         Mecanum_drive("Forward", 1, 1000);
+
+         Mecanum_drive("Forward", 1, 100);
          Mecanum_Turn("Left", 1, 90);
 
       }
    }
 
 
-   public void Mecanum_drive(String Dir, double Spd, int Dist) {
-
+   public void Mecanum_drive(String Dir, double Spd, int Slp) {
+      /*
       topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
+      */
 
       switch (Dir) {
          case "Forward":
@@ -99,7 +101,7 @@ public class FY21AutoTest extends LinearOpMode {
             bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
             break;
       }
-      Dist = Math.abs(Dist);
+      /*Dist = Math.abs(Dist);
       topLeft.setTargetPosition(Dist+topLeft.getCurrentPosition());
       topRight.setTargetPosition(Dist+topRight.getCurrentPosition());
       bottomLeft.setTargetPosition(Dist+bottomLeft.getCurrentPosition());
@@ -109,7 +111,7 @@ public class FY21AutoTest extends LinearOpMode {
       topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
+*/
       Spd = Range.clip(Spd, 0, 1);
       topLeft.setPower(Spd);
       topRight.setPower(Spd);
@@ -117,18 +119,20 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-      while (opModeIsActive() && topLeft.isBusy())
+     // while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-      {
+     // {
          telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
          telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
          telemetry.addData("encoder-fwd-BL", bottomLeft.getCurrentPosition() + "busy=" + bottomLeft.isBusy());
          telemetry.addData("encoder-fwd-BR", bottomRight.getCurrentPosition() + "busy=" + bottomRight.isBusy());
          telemetry.update();
-         idle();
-      }
+     //    idle();
+     // }
+      //wait (run motors) for Slp number of milliseconds
+      sleep(Slp);
 
-      //stop
+      //stop motors
       topLeft.setPower(0);
       topRight.setPower(0);
       bottomLeft.setPower(0);
