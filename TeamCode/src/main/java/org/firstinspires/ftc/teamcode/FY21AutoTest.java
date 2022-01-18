@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21AutoTest", group = "team")
+@Autonomous(name = "FY21AutoTest", group = "test")
 
 public class FY21AutoTest extends LinearOpMode {
    //define motors and stuff
@@ -40,8 +40,9 @@ public class FY21AutoTest extends LinearOpMode {
       topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-/*
-      topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+      topLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+      /*
       topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -60,14 +61,14 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.update();
          //Move Forward 0.5
 
-         Mecanum_Turn("Left", 1, 90);
-         Mecanum_drive("Forward", 1, 100);
+         Mecanum_drive("Forward", 0.5,100);
+       //  Mecanum_Turn("Left", 1, 90);
 
       }
    }
 
 
-   public void Mecanum_drive(String Dir, double Spd, int Slp) {
+   public void Mecanum_drive(String Dir, double Spd, long Slp) {
       /*
       topRight = hardwareMap.dcMotor.get("TR"); //Control Hub Port 0
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
@@ -119,16 +120,17 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(Spd);
 
 
-     // while (opModeIsActive() && topLeft.isBusy())
+      // while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
-     // {
-         telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
-         telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
-         telemetry.addData("encoder-fwd-BL", bottomLeft.getCurrentPosition() + "busy=" + bottomLeft.isBusy());
-         telemetry.addData("encoder-fwd-BR", bottomRight.getCurrentPosition() + "busy=" + bottomRight.isBusy());
-         telemetry.update();
-     //    idle();
-     // }
+      // {
+      telemetry.addData("encoder-fwd-left", topLeft.getCurrentPosition() + "busy=" + topLeft.isBusy());
+      telemetry.addData("encoder-fwd-right", topRight.getCurrentPosition() + "busy=" + topRight.isBusy());
+      telemetry.addData("encoder-fwd-BL", bottomLeft.getCurrentPosition() + "busy=" + bottomLeft.isBusy());
+      telemetry.addData("encoder-fwd-BR", bottomRight.getCurrentPosition() + "busy=" + bottomRight.isBusy());
+      telemetry.addData("Dir:", Dir + "Spd:" + Spd + "Slp:" + Slp);
+      telemetry.update();
+      //    idle();
+      // }
       //wait (run motors) for Slp number of milliseconds
       sleep(Slp);
 
@@ -139,8 +141,8 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(0);
    }
 
-   public void Mecanum_Turn(String DirT, double SpdT, int SlpT) {
-      double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
+   public void Mecanum_Turn(String DirT, double SpdT, long SlpT) {
+    /*  double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
       //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
       double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
       double WheelSize = 4;  //diameter in inches of wheels (the engineers like 4in)
@@ -150,8 +152,10 @@ public class FY21AutoTest extends LinearOpMode {
       int DriveTicks = 1440;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
       //DriveTicks * RotationsPerCircle = 360 degrees
       //Rotations per degree
-      /*int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
-      int Rotate = (int) Math.round(Deg * TicksPerDegree); */
+      int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
+      int Rotate = (int) Math.round(Deg * TicksPerDegree);
+      */
+
       /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();*/
 
@@ -172,7 +176,7 @@ public class FY21AutoTest extends LinearOpMode {
          bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
          bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
       }
-      /*Rotate = Math.abs(Rotate);
+     /* Rotate = Math.abs(Rotate);
       topLeft.setTargetPosition(Rotate);
       topRight.setTargetPosition(Rotate);
       bottomLeft.setTargetPosition(Rotate);
@@ -181,8 +185,8 @@ public class FY21AutoTest extends LinearOpMode {
       topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);*/
-
+      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+*/
       SpdT = Range.clip(SpdT, 0, 1);
       topLeft.setPower(SpdT);
       topRight.setPower(SpdT);
