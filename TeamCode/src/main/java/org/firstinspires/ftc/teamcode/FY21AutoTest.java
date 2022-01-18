@@ -42,8 +42,12 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
       topLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+      topRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+      bottomLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+      bottomRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
       /*
-      topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+      topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
       bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 */
@@ -51,19 +55,20 @@ public class FY21AutoTest extends LinearOpMode {
       waitForStart();
       while (opModeIsActive()) {
 
-         /*if (currentstep == 0) {
+         if (currentstep == 0) {
             currentstep++;
          }
 
          if (currentstep == 1) {
-           */
-         telemetry.addData("inside currentstep:", currentstep);
-         telemetry.update();
-         //Move Forward 0.5
 
-         Mecanum_drive("Forward", 0.5,100);
-       //  Mecanum_Turn("Left", 1, 90);
+            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.update();
+            //Move Forward 0.5
 
+            Mecanum_drive("Forward", 0.5, 100);
+            //  Mecanum_Turn("Left", 1, 90);
+            currentstep++;
+         }
       }
    }
 
