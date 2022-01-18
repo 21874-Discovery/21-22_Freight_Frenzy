@@ -34,6 +34,20 @@ public class FY21Teleop extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()) {
+            telemetry.addLine("Tele-Op Controls:");
+            telemetry.addLine("Gamepad 1:");
+            telemetry.addLine("Left Joystick: Drive/Strafe");
+            telemetry.addLine("Right Joystick: Turn");
+            telemetry.addLine("Right Bumper: Slow Down (Reverts when released)");
+            telemetry.addLine("Gamepad 2:");
+            telemetry.addLine("Right Joystick: Linear Slide");
+            telemetry.addLine("X-Button: Spin Carousel");
+            telemetry.addLine("Left Joystick Button: Carousel Mode Blue");
+            telemetry.addLine("Right Joystick Button: Carousel Mode Red");
+            telemetry.addLine("Left Trigger: Take Freight (Spindle)");
+            telemetry.addLine("Right Trigger: Drop Freight (Spindle)");
+            telemetry.addLine("Please note that Spindle controls will cancel each other out if held at the same time. They are also determined by force.");
+            telemetry.update();
             if (gamepad1.right_bumper) { //when held, will slow the robot down for precise driving.
                 speed = 0.25;
             }
