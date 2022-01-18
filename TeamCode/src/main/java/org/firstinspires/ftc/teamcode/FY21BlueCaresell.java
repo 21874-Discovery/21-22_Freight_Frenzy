@@ -64,7 +64,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             //bottom- lowest exstention
          }
 
-         /*Mecanum_drive("Left", 1.0, 1000);
+         Mecanum_drive("Left", 1.0, 1000);
          Mecanum_Turn("Left", 1.0, 90);
          //drop freight
          Mecanum_drive("Left", 1.0, 2000);
@@ -99,7 +99,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             sleep(2000);
             carouselSpinner.setPower(0);
             Mecanum_drive("Right", 1.0, 2000);
-         }*/
+         }
 
 
          //Duck Scanner 1 left side
