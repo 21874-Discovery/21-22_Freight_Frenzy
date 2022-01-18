@@ -60,8 +60,8 @@ public class FY21AutoTest extends LinearOpMode {
          telemetry.update();
          //Move Forward 0.5
 
-         Mecanum_drive("Forward", 1, 100);
          Mecanum_Turn("Left", 1, 90);
+         Mecanum_drive("Forward", 1, 100);
 
       }
    }

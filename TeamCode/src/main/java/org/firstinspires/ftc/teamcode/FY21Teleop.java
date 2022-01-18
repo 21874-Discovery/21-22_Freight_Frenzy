@@ -72,7 +72,7 @@ public class FY21Teleop extends LinearOpMode {
             double bottomLeftCorrectedSpeed = Range.clip(Math.pow(BottomRightSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomRightCorrectedSpeed = Range.clip(Math.pow(BottomLeftSpeed, 3), -speed, speed);        // Slows down the motor and sets its max/min speed to the double "speed"
             double linearSpeed = gamepad2RightY;
-            double spindleSpeed = gamepad2LTrigger - gamepad2RTrigger;
+            double spindleSpeed = gamepad2RTrigger - gamepad2LTrigger;
 
             topRight.setPower(topRightCorrectedSpeed);
             bottomRight.setPower(bottomRightCorrectedSpeed);
