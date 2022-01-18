@@ -139,7 +139,7 @@ public class FY21AutoTest extends LinearOpMode {
       bottomRight.setPower(0);
    }
 
-   public void Mecanum_Turn(String DirT, double SpdT, int Deg) {
+   public void Mecanum_Turn(String DirT, double SpdT, int SlpT) {
       double RobotDiameter = 20; //Max robot size is 18x18 with max diagonal width of 25.46 in)
       //Robot spins in a circle, rough diameter of robot's circle can be no more than 25.42 (diagonal)
       double RobotCircumference = RobotDiameter * 3.14;//Max circumference of Robot (d * pi) = 80 in
@@ -150,8 +150,8 @@ public class FY21AutoTest extends LinearOpMode {
       int DriveTicks = 1440;  //1 wheel rotation = DriveTicks - based on motor and gear ratio  => 1 Tetrix DC motor 60:1 revolution = 1440 encoder ticks (20:1 = 480 ticks (divide by 60/20) or 400 ticks = 1 foot)
       //DriveTicks * RotationsPerCircle = 360 degrees
       //Rotations per degree
-      int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
-      int Rotate = (int) Math.round(Deg * TicksPerDegree);
+      /*int TicksPerDegree = (int) Math.round((DriveTicks * RotationsPerCircle)/360);
+      int Rotate = (int) Math.round(Deg * TicksPerDegree); */
       /*telemetry.addData("Rotating", Rotate + "ticks or " + Deg + " degrees");
       telemetry.update();*/
 
@@ -172,7 +172,7 @@ public class FY21AutoTest extends LinearOpMode {
          bottomLeft.setDirection(DcMotorSimple.Direction.FORWARD);
          bottomRight.setDirection(DcMotorSimple.Direction.FORWARD);
       }
-      Rotate = Math.abs(Rotate);
+      /*Rotate = Math.abs(Rotate);
       topLeft.setTargetPosition(Rotate);
       topRight.setTargetPosition(Rotate);
       bottomLeft.setTargetPosition(Rotate);
@@ -181,7 +181,7 @@ public class FY21AutoTest extends LinearOpMode {
       topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
       bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);*/
 
       SpdT = Range.clip(SpdT, 0, 1);
       topLeft.setPower(SpdT);
@@ -189,6 +189,7 @@ public class FY21AutoTest extends LinearOpMode {
       bottomLeft.setPower(SpdT);
       bottomRight.setPower(SpdT);
 
+      sleep(SlpT);
 
       /*while (opModeIsActive() && topLeft.isBusy())
       //leftMotor.getCurrentPosition() < leftMotor.getTargetPosition())
