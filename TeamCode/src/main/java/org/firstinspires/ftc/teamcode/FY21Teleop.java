@@ -20,6 +20,7 @@ public class FY21Teleop extends LinearOpMode {
     double carouselSpeed = 0;
     double teamSpin = 1;
 
+
     @Override
     public void runOpMode() throws InterruptedException {
         //hardware maps
@@ -45,18 +46,6 @@ public class FY21Teleop extends LinearOpMode {
             if (gamepad2.right_stick_button) {
                 teamSpin = 1;
             }
-            if (gamepad2.left_bumper) {
-                spindleSpeed = -1;
-            }
-            if (gamepad2.right_bumper) {
-                spindleSpeed = 1;
-            }
-            if (!gamepad2.left_bumper) {
-                spindleSpeed = 0;
-            }
-            if (!gamepad2.right_bumper) {
-                spindleSpeed = 0;
-            }
             if (gamepad2.x) {
                 carouselSpeed = teamSpin;
             }
@@ -67,7 +56,9 @@ public class FY21Teleop extends LinearOpMode {
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
             float gamepad1LeftX = gamepad1.left_stick_y;       // Sets the gamepads left sticks x position to a float so that we can easily track the stick
             float gamepad1RightX = gamepad1.right_stick_x;     // Sets the gamepads right sticks x position to a float so that we can easily track the stick
-            float gamepad2RightY = gamepad2.right_stick_y;     // Sets the 2nd gamepads right sticks x position to a float so that was can easily track the stick
+            float gamepad2RightY = gamepad2.right_stick_y;     // Sets the 2nd gamepads right sticks x position to a float so that we can easily track the stick
+            float gamepad2LTrigger = gamepad2.left_trigger;     // Sets the 2nd gamepads left trigger pushdown strength to a float
+            float gamepad2RTrigger = gamepad2.right_trigger;     // Sets the 2nd gamepads left trigger pushdown strength to a float
 
             // Mechanum formulas
             double TopRightSpeed = gamepad1LeftY + gamepad1LeftX + gamepad1RightX;     // Combines the inputs of the sticks to clip their output to a value between 1 and -1
@@ -81,6 +72,7 @@ public class FY21Teleop extends LinearOpMode {
             double bottomLeftCorrectedSpeed = Range.clip(Math.pow(BottomRightSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomRightCorrectedSpeed = Range.clip(Math.pow(BottomLeftSpeed, 3), -speed, speed);        // Slows down the motor and sets its max/min speed to the double "speed"
             double linearSpeed = gamepad2RightY;
+            double spindleSpeed = gamepad2LTrigger - gamepad2RTrigger;
 
             topRight.setPower(topRightCorrectedSpeed);
             bottomRight.setPower(bottomRightCorrectedSpeed);
