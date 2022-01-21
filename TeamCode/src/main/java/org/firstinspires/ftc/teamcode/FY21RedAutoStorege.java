@@ -64,12 +64,14 @@ public class FY21RedAutoStorege extends LinearOpMode {
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
                 //Move Forward 0.5
-                Mecanum_drive("Backward", 0.5, 525);
-                carouselSpinner.setPower(1);
-                sleep(1000);
+                Mecanum_drive("Backward", 0.5, 625);
+                carouselSpinner.setPower(0.5);
+                sleep(3000);
                 carouselSpinner.setPower(0);
-                Mecanum_Turn("Left", 1, 400);
-                Mecanum_drive("Forward", 0.5, 1000);
+                Mecanum_Turn("Left", 1, 200);
+                Mecanum_drive("Forward", 0.5, 500);
+                Mecanum_drive("Left", 1, 240);
+                //Mecanum_drive("Forward", 0.5, 500);
                 currentstep++;
             }
         }
