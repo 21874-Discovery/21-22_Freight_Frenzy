@@ -21,6 +21,7 @@ public class FY21BlueCaresell extends LinearOpMode {
    ColorSensor duckScannerLeft; //left
    ColorSensor duckScannerRight; //right
    DcMotor linearSlide;
+   DcMotor spindle;
    //ColorSensor ColorSensor;
    //define variables
    int currentstep = 0;
@@ -34,6 +35,7 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
+      spindle = hardwareMap.dcMotor.get("SM"); //Expansion Hub Port 1
       carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
 
 
@@ -64,10 +66,27 @@ public class FY21BlueCaresell extends LinearOpMode {
 
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
-            //Move Forward 0.5
 
             Mecanum_drive("Forward", 0.5, 1000);
             Mecanum_Turn("Left", 1, 250);
+            currentstep++;
+         }
+
+         if (currentstep == 2) {
+            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.update();
+
+            Mecanum_drive ("Forward", 0.5, 2000);
+            Mecanum_Turn("Right", 1, 250);
+            currentstep++;
+         }
+         if (currentstep == 3) {
+            telemetry.addData("inside currentstep:", currentstep);
+            telemetry.update();
+
+            spindle.setPower (1);
+            sleep (1000);
+            spindle.setPower(0);
             currentstep++;
          }
       }
