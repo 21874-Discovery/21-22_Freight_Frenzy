@@ -67,8 +67,7 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
 
-            Mecanum_drive("Forward", 0.5, 1000);
-            Mecanum_Turn("Left", 1, 250);
+            Mecanum_drive("Backward", 0.5, 1000);
             currentstep++;
          }
 
@@ -76,17 +75,17 @@ public class FY21BlueCaresell extends LinearOpMode {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
 
-            Mecanum_drive ("Forward", 0.5, 2000);
-            Mecanum_Turn("Right", 1, 250);
+            carouselSpinner.setPower(1);
+            sleep(1000);
+            carouselSpinner.setPower(0);
             currentstep++;
          }
          if (currentstep == 3) {
             telemetry.addData("inside currentstep:", currentstep);
             telemetry.update();
 
-            spindle.setPower (1);
-            sleep (1000);
-            spindle.setPower(0);
+            Mecanum_drive("Left", 1, 1000);
+            Mecanum_drive("Backward",1,1000);
             currentstep++;
          }
       }
