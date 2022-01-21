@@ -65,8 +65,10 @@ public class FY21AutoMove extends LinearOpMode {
             telemetry.update();
             //Move Forward 0.5
 
-            Mecanum_drive("Forward", 0.5, 1000);
-            Mecanum_drive("Left", 0.5, 1000);
+            /*Mecanum_drive("Forward", 0.5, 750);
+            Mecanum_drive("Left", 0.5, 10000);*/
+            // or
+            Mecanum_Turn("Left", 0.5, 360);
             //  Mecanum_Turn("Left", 1, 90);
             currentstep++;
          }
