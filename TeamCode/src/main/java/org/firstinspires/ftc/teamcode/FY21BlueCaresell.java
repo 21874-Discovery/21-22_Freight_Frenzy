@@ -86,7 +86,8 @@ public class FY21BlueCaresell extends LinearOpMode {
 
             Mecanum_drive("Left", 1, 1000);
             Mecanum_drive("Backward",1,1000);
-            currentstep++;
+            telemetry.addLine("Autonomous is done!");
+            telemetry.update();
          }
       }
    }
