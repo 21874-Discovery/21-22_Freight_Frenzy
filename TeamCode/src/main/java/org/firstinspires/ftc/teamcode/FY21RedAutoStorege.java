@@ -20,6 +20,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
     DcMotor linearSlide;
+    DcMotor spindle;
     //ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
@@ -34,6 +35,8 @@ public class FY21RedAutoStorege extends LinearOpMode {
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
+        linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
+        spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
 
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -63,15 +66,28 @@ public class FY21RedAutoStorege extends LinearOpMode {
 
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
-                //Move Forward 0.5
-                Mecanum_drive("Backward", 0.5, 625);
+                //Mecanum_drive("Forward", 0.5, 2375);
+                spindle.setPower(-1);
+                sleep(2000);
+                spindle.setPower(0);
+                linearSlide.setPower(1);
+                sleep(8000);
+                linearSlide.setPower(0);
+                spindle.setPower(1);
+                sleep(5000);
+                spindle.setPower(0);
+
+                //The code bellow is just for the duck park red carousel
+                /*Mecanum_drive("Backward", 0.5, 625);
                 carouselSpinner.setPower(0.5);
-                sleep(3000);
+                //sleep(3500), this is if the shield does not get put on
+                sleep(3800);
                 carouselSpinner.setPower(0);
-                Mecanum_Turn("Left", 1, 200);
-                Mecanum_drive("Forward", 0.5, 500);
-                Mecanum_drive("Left", 1, 240);
-                //Mecanum_drive("Forward", 0.5, 500);
+                Mecanum_drive("Forward", 0.5, 625);
+                Mecanum_Turn("Left", 1, 408);
+                Mecanum_drive("Forward", 0.5, 665);
+                Mecanum_Turn("Left", 1, 408);
+                Mecanum_drive("Forward", 0.5, 810);*/
                 currentstep++;
             }
         }
