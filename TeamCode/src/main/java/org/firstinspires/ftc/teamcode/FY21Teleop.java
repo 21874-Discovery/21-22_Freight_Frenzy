@@ -18,7 +18,6 @@ public class FY21Teleop extends LinearOpMode {
     double speed = 1;
     double spindleSpeed = 0;
     double carouselSpeed = 0;
-    double teamSpin = 1;
 
 
     @Override
@@ -41,9 +40,8 @@ public class FY21Teleop extends LinearOpMode {
             telemetry.addLine("Right Bumper: Slow Down (Reverts when released)");
             telemetry.addLine("Gamepad 2:");
             telemetry.addLine("Right Joystick: Linear Slide");
-            telemetry.addLine("X-Button: Spin Carousel");
-            telemetry.addLine("Left Joystick Button: Carousel Mode Blue");
-            telemetry.addLine("Right Joystick Button: Carousel Mode Red");
+            telemetry.addLine("X-Button: Spin Carousel (Blue)");
+            telemetry.addLine("B-Button: Spin Carousel (Red)");
             telemetry.addLine("Left Trigger: Take Freight (Spindle)");
             telemetry.addLine("Right Trigger: Drop Freight (Spindle)");
             telemetry.addLine("Please note that Spindle controls will cancel each other out if held at the same time. They are also determined by force.");
@@ -54,16 +52,14 @@ public class FY21Teleop extends LinearOpMode {
             if (!gamepad1.right_bumper) { //when released, speed will be brought back to 1. Exclamation marks are "not" functions.
                 speed = 1;
             }
-            if (gamepad2.left_stick_button) {
-                teamSpin = -1;
+
+            if (gamepad2.x && !gamepad2.b) {
+                carouselSpeed = -1;
             }
-            if (gamepad2.right_stick_button) {
-                teamSpin = 1;
+            if (!gamepad2.x && gamepad2.b) {
+                carouselSpeed = -1;
             }
-            if (gamepad2.x) {
-                carouselSpeed = teamSpin;
-            }
-            if (!gamepad2.x) {
+            if (!gamepad2.x && !gamepad2.b || gamepad2.x && gamepad2.b) {
                 carouselSpeed = 0;
             }
 
