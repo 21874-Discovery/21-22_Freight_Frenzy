@@ -76,7 +76,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
                 spindle.setPower(1);
                 sleep(5000);
                 spindle.setPower(0);
-
+//it has been saved :)
                 //The code bellow is just for the duck park red carousel
                 /*Mecanum_drive("Backward", 0.5, 625);
                 carouselSpinner.setPower(0.5);
