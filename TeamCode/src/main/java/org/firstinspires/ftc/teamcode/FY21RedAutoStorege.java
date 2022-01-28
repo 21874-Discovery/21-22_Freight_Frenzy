@@ -66,7 +66,7 @@ public class FY21RedAutoStorege extends LinearOpMode {
 
                 telemetry.addData("inside currentstep:", currentstep);
                 telemetry.update();
-                //Mecanum_drive("Forward", 0.5, 2375);
+                Mecanum_drive("Forward", 0.5, 2450);
                 spindle.setPower(-1);
                 sleep(2000);
                 spindle.setPower(0);
@@ -76,8 +76,16 @@ public class FY21RedAutoStorege extends LinearOpMode {
                 spindle.setPower(1);
                 sleep(5000);
                 spindle.setPower(0);
-//it has been saved :)
-                //The code bellow is just for the duck park red carousel
+                Mecanum_drive("Backward", 0.5, 2450);
+                Mecanum_Turn("Left", 1, 400);
+                Mecanum_drive("Forward", 0.5, 370);
+
+
+                //Movement to bring freight to the alliance shipping hub(the red and blue thing)
+
+
+
+                //The code bellow is just for the duck park red carousel side
                 /*Mecanum_drive("Backward", 0.5, 625);
                 carouselSpinner.setPower(0.5);
                 //sleep(3500), this is if the shield does not get put on

@@ -62,12 +62,16 @@ public class FY21BlueCaresellStorage extends LinearOpMode {
 
          if (currentstep == 1) {
 
-            telemetry.addData("inside currentstep:", currentstep);
-            telemetry.update();
-            //Move Forward 0.5
-
-            Mecanum_drive("Forward", 0.5, 1000);
-            Mecanum_Turn("Left", 1, 250);
+            Mecanum_drive("Backward", 0.5, 625);
+                carouselSpinner.setPower(0.5);
+                //sleep(3500), this is if the shield does not get put on, this is instead of the sleep statement bellow (sleep (3800))
+                sleep(3800);
+                carouselSpinner.setPower(0);
+                Mecanum_drive("Forward", 0.5, 625);
+                Mecanum_Turn("Right", 1, 408);
+                Mecanum_drive("Forward", 0.5, 665);
+                Mecanum_Turn("Right", 1, 408);
+                Mecanum_drive("Forward", 0.5, 810);
             currentstep++;
          }
       }
