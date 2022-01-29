@@ -68,9 +68,9 @@ public class FY21BlueCaresellStorage extends LinearOpMode {
                 sleep(3800);
                 carouselSpinner.setPower(0);
                 Mecanum_drive("Forward", 0.5, 625);
-                Mecanum_Turn("Left", 1, 408);
+                Mecanum_Turn("Right", 1, 408);
                 Mecanum_drive("Forward", 0.5, 665);
-                Mecanum_Turn("Left", 1, 408);
+                Mecanum_Turn("Right", 1, 408);
                 Mecanum_drive("Forward", 0.5, 810);
             currentstep++;
          }
