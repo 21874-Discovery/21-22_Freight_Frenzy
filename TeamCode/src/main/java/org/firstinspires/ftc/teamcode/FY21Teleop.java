@@ -54,10 +54,10 @@ public class FY21Teleop extends LinearOpMode {
             }
 
             if (gamepad2.x && !gamepad2.b) {
-                carouselSpeed = -1;
+                carouselSpeed = -0.75;
             }
             if (!gamepad2.x && gamepad2.b) {
-                carouselSpeed = -1;
+                carouselSpeed = 0.75;
             }
             if (!gamepad2.x && !gamepad2.b || gamepad2.x && gamepad2.b) {
                 carouselSpeed = 0;
