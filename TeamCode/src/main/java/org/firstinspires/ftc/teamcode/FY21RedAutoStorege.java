@@ -20,7 +20,6 @@ public class FY21RedAutoStorege extends LinearOpMode {
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
     DcMotor linearSlide;
-    DcMotor spindle;
     //ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
@@ -35,8 +34,6 @@ public class FY21RedAutoStorege extends LinearOpMode {
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
-        linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
-        spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
 
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -64,38 +61,16 @@ public class FY21RedAutoStorege extends LinearOpMode {
 
             if (currentstep == 1) {
 
-                telemetry.addData("inside currentstep:", currentstep);
-                telemetry.update();
-                Mecanum_drive("Forward", 0.5, 2450);
-                spindle.setPower(-1);
-                sleep(2000);
-                spindle.setPower(0);
-                linearSlide.setPower(1);
-                sleep(8000);
-                linearSlide.setPower(0);
-                spindle.setPower(1);
-                sleep(5000);
-                spindle.setPower(0);
-                Mecanum_drive("Backward", 0.5, 2450);
-                Mecanum_Turn("Left", 1, 400);
-                Mecanum_drive("Forward", 0.5, 370);
-
-
-                //Movement to bring freight to the alliance shipping hub(the red and blue thing)
-
-
-
-                //The code bellow is just for the duck park red carousel side
-                /*Mecanum_drive("Backward", 0.5, 625);
+                Mecanum_drive("Backward", 0.5, 625);
                 carouselSpinner.setPower(0.5);
-                //sleep(3500), this is if the shield does not get put on
+                //sleep(3500), this is if the shield does not get put on, this is instead of the sleep statement bellow (sleep (3800))
                 sleep(3800);
                 carouselSpinner.setPower(0);
                 Mecanum_drive("Forward", 0.5, 625);
-                Mecanum_Turn("Left", 1, 408);
+                Mecanum_Turn("Right", 1, 408);
                 Mecanum_drive("Forward", 0.5, 665);
-                Mecanum_Turn("Left", 1, 408);
-                Mecanum_drive("Forward", 0.5, 810);*/
+                Mecanum_Turn("Right", 1, 408);
+                Mecanum_drive("Forward", 0.5, 810);
                 currentstep++;
             }
         }
