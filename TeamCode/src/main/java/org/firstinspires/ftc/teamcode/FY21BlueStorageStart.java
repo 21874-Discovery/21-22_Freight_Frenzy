@@ -9,9 +9,9 @@ import com.qualcomm.robotcore.util.Range;
 
 //1 centimeter - 0.393701 inches
 
-@Autonomous(name = "FY21AutoBlueCarousel", group = "team")
+@Autonomous(name = "FY21BlueCarousel_Warehouse", group = "team")
 
-public class FY21BlueCaresell extends LinearOpMode {
+public class FY21BlueStorageStart extends LinearOpMode {
    //define motors and stuff
    DcMotor topRight;
    DcMotor bottomRight;
@@ -21,7 +21,6 @@ public class FY21BlueCaresell extends LinearOpMode {
    ColorSensor duckScannerLeft; //left
    ColorSensor duckScannerRight; //right
    DcMotor linearSlide;
-   DcMotor spindle;
    //ColorSensor ColorSensor;
    //define variables
    int currentstep = 0;
@@ -35,7 +34,6 @@ public class FY21BlueCaresell extends LinearOpMode {
       bottomRight = hardwareMap.dcMotor.get("BR"); //Control Hub Port 1
       topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
       bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
-      spindle = hardwareMap.dcMotor.get("SM"); //Expansion Hub Port 1
       carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
 
 
@@ -64,30 +62,17 @@ public class FY21BlueCaresell extends LinearOpMode {
 
          if (currentstep == 1) {
 
-            telemetry.addData("inside currentstep:", currentstep);
-            telemetry.update();
-
-            Mecanum_drive("Backward", 0.5, 1000);
+            Mecanum_drive("Backward", 0.5, 625);
+                carouselSpinner.setPower(-0.5);
+                //sleep(3500), this is if the shield does not get put on, this is instead of the sleep statement bellow (sleep (3800))
+                sleep(3800);
+                carouselSpinner.setPower(0);
+                Mecanum_drive("Forward", 0.5, 625);
+                Mecanum_Turn("Right", 1, 408);
+                Mecanum_drive("Forward", 0.5, 665);
+                Mecanum_Turn("Right", 1, 408);
+                Mecanum_drive("Forward", 0.5, 810);
             currentstep++;
-         }
-
-         if (currentstep == 2) {
-            telemetry.addData("inside currentstep:", currentstep);
-            telemetry.update();
-
-            carouselSpinner.setPower(1);
-            sleep(1000);
-            carouselSpinner.setPower(0);
-            currentstep++;
-         }
-         if (currentstep == 3) {
-            telemetry.addData("inside currentstep:", currentstep);
-            telemetry.update();
-
-            Mecanum_drive("Left", 1, 1000);
-            Mecanum_drive("Backward",1,1000);
-            telemetry.addLine("Autonomous is done!");
-            telemetry.update();
          }
       }
    }

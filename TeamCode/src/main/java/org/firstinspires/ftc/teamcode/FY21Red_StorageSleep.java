@@ -1,3 +1,5 @@
+//This is actually the code for the starting position of the carousel
+//This sleep statement is so that we don't run into others robots, we do this by waiting 20sec after we run the carousel. THIS WILL NOT SOLVE ALL YOUR PROBLEMS
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -8,9 +10,9 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21AutoRedCarousel", group = "team")
+@Autonomous(name = "FY21Red_WarehouseSleep", group = "team")
 
-public class FY21RedAutoCaresell extends LinearOpMode {
+public class FY21Red_StorageSleep extends LinearOpMode {
     //define motors and stuff
     DcMotor topRight;
     DcMotor bottomRight;
@@ -20,7 +22,6 @@ public class FY21RedAutoCaresell extends LinearOpMode {
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
     DcMotor linearSlide;
-    DcMotor spindle;
     //ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
@@ -35,8 +36,6 @@ public class FY21RedAutoCaresell extends LinearOpMode {
         topLeft = hardwareMap.dcMotor.get("TL"); //Control Hub Port 2
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
-        linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
-        spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
 
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -64,15 +63,16 @@ public class FY21RedAutoCaresell extends LinearOpMode {
 
             if (currentstep == 1) {
 
+                sleep(20000);
                 Mecanum_drive("Backward", 0.5, 625);
                 carouselSpinner.setPower(0.5);
-                //sleep(3500), this is if the shield does not get put on
+                //sleep(3500), this is if the shield does not get put on, this is instead of the sleep statement bellow (sleep (3800))
                 sleep(3800);
                 carouselSpinner.setPower(0);
                 Mecanum_drive("Forward", 0.5, 625);
-                Mecanum_Turn("Left", 1, 410);
+                Mecanum_Turn("Left", 1, 408);
                 Mecanum_drive("Forward", 0.5, 665);
-                Mecanum_Turn("Left", 1, 410);
+                Mecanum_Turn("Left", 1, 408);
                 Mecanum_drive("Forward", 0.5, 810);
                 currentstep++;
             }
