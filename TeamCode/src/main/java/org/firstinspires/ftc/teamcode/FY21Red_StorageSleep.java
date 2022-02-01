@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21Red_WarehouseSleep", group = "team")
+@Autonomous(name = "FY21Red_StorageSleep", group = "team")
 
 public class FY21Red_StorageSleep extends LinearOpMode {
     //define motors and stuff
