@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21Red_Start_Warehouse_Sleep", group = "team")
+@Autonomous(name = "FY21Red_2_CarouselSleep", group = "team")
 
 public class FY21Red_Start_Warehouse_Sleep extends LinearOpMode {
     //define motors and stuff
@@ -67,7 +67,7 @@ public class FY21Red_Start_Warehouse_Sleep extends LinearOpMode {
             if (currentstep == 1) {
 
                 sleep(20000);
-                Mecanum_drive("Backward", 0.5, 1050);
+                Mecanum_drive("Backward", 0.5, 1100);
                 carouselSpinner.setPower(0.5);
                 //sleep(3500), this is if the shield does not get put on
                 sleep(3800);

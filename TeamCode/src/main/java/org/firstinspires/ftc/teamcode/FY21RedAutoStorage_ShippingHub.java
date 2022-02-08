@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21RedAutoStorage_ShippingHub", group = "team")
+@Autonomous(name = "FY21Red_StartW3_Score_Warehouse", group = "team")
 
 public class FY21RedAutoStorage_ShippingHub extends LinearOpMode {
     //define motors and stuff
@@ -64,27 +64,17 @@ public class FY21RedAutoStorage_ShippingHub extends LinearOpMode {
                 Mecanum_Turn("Left", 0.5, 400);
                 Mecanum_drive("Forward", 0.5, 740);
                 linearSlide.setPower(0.5);
-                sleep(7000);
+                sleep(5000);
                 linearSlide.setPower(0);
                 carouselSpinner.setPower(0.5);
                 sleep(4000);
                 carouselSpinner.setPower(0);
                 linearSlide.setPower(-0.5);
-                sleep(1000);
+                sleep(5000);
                 linearSlide.setPower(0);
                 Mecanum_drive("Backward", 0.5, 740);
                 Mecanum_Turn("Right", 1, 400);
-
-                Mecanum_drive("Backward", 0.5, 625);
-                carouselSpinner.setPower(0.5);
-                //sleep(3500), this is if the shield does not get put on, this is instead of the sleep statement bellow (sleep (3800))
-                sleep(3800);
-                carouselSpinner.setPower(0);
-                Mecanum_drive("Forward", 0.5, 625);
-                Mecanum_Turn("Left", 0.5, 408);
-                Mecanum_drive("Forward", 0.5, 665);
-                Mecanum_Turn("Left", 0.5, 408);
-                Mecanum_drive("Forward", 0.5, 810);
+                Mecanum_drive("Forward", 0.5, 3000);
                 currentstep++;
             }
         }

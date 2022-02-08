@@ -1,5 +1,6 @@
 //Carousel Start
 //This sleep statement is so that we don't run into others robots, we do this by waiting 20sec after we run the carousel. THIS WILL NOT SOLVE ALL YOUR PROBLEMS
+//The robot starts 1 block away from the carousel and has a sleep statment at the beginning for 20sec
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -11,7 +12,7 @@ import com.qualcomm.robotcore.util.Range;
 
 //1 centimeter - 0.393701 inches
 
-@Autonomous(name = "FY21Blue_Storage_Sleep", group = "team")
+@Autonomous(name = "FY21Blue_1_CarouselSleep", group = "team")
 
 public class FY21Blue_Storage_Sleep extends LinearOpMode {
    //define motors and stuff

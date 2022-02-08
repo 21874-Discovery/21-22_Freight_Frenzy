@@ -1,3 +1,4 @@
+//Starts 2 squares away from the carousel
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -9,7 +10,7 @@ import com.qualcomm.robotcore.util.Range;
 
 //1 centimeter - 0.393701 inches
 
-@Autonomous(name = "FY21BlueWarehouse", group = "team")
+@Autonomous(name = "FY21Blue_2_Carousel", group = "team")
 
 public class FY21BlueWarehouse extends LinearOpMode {
    //define motors and stuff
