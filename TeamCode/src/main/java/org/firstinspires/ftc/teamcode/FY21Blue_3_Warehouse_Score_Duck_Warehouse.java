@@ -20,6 +20,7 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
     ColorSensor duckScannerLeft; //left
     ColorSensor duckScannerRight; //right
     DcMotor linearSlide;
+    DcMotor spindle;
     //ColorSensor ColorSensor;
     //define variables
     int currentstep = 0;
@@ -35,6 +36,7 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
         bottomLeft = hardwareMap.dcMotor.get("BL"); //Control Hub Port 3
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //Expansion Hub Port 2
         linearSlide = hardwareMap.dcMotor.get("LS");
+        spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
 
 
         topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -66,14 +68,19 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
                 linearSlide.setPower(0.5);
                 sleep(5000);
                 linearSlide.setPower(0);
-                carouselSpinner.setPower(0.5);
+                spindle.setPower(0.5);
                 sleep(4000);
-                carouselSpinner.setPower(0);
+                spindle.setPower(0);
                 linearSlide.setPower(-0.5);
                 sleep(5000);
                 linearSlide.setPower(0);
                 Mecanum_drive("Backward", 0.5, 740);
-                Mecanum_Turn("Right", 1, 400);
+                Mecanum_Turn("Left", 0.5, 400);
+                Mecanum_drive("Backward", 0.5, 2000);
+                carouselSpinner.setPower(0.5);
+                sleep(6000);
+                carouselSpinner.setPower(0);
+                Mecanum_drive("Backward", 0.5, 5000);
                 currentstep++;
             }
         }
