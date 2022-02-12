@@ -72,9 +72,9 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
                 sleep(2000);
                 spindle.setPower(0);
                 linearSlide.setPower(-0.5);
-                sleep(2500);
+                sleep(750);
                 linearSlide.setPower(0);
-                Mecanum_drive("Backward", 0.5, 740);
+                Mecanum_drive("Backward", 0.5, 760);
                 Mecanum_Turn("Left", 0.5, 750);
                 Mecanum_drive("Backward", 0.5, 2000);
                 carouselSpinner.setPower(0.65);
