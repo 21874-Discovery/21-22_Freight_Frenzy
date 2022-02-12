@@ -63,8 +63,8 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
             }
 
             if (currentstep == 1) {
-                Mecanum_Turn("Right", 0.5, 400);
-                Mecanum_drive("Forward", 0.5, 740);
+                Mecanum_Turn("Right", 0.5, 400); // turn right at 50% for 400ms
+                Mecanum_drive("Forward", 0.5, 740); // forward 50% for 740ms
                 linearSlide.setPower(0.5);
                 sleep(5000);
                 linearSlide.setPower(0);
