@@ -16,7 +16,6 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor spindle;
 
     double speed = 1;
-    double spindleSpeed = 0;
     double carouselSpeed = 0;
 
 
