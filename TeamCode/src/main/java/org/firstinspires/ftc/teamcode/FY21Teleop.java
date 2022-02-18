@@ -16,7 +16,6 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor spindle;
 
     double speed = 1;
-    double spindleSpeed = 0;
     double carouselSpeed = 0;
 
 
@@ -81,7 +80,7 @@ public class FY21Teleop extends LinearOpMode {
             double topRightCorrectedSpeed = Range.clip(Math.pow(TopLeftSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomLeftCorrectedSpeed = Range.clip(Math.pow(BottomRightSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomRightCorrectedSpeed = Range.clip(Math.pow(BottomLeftSpeed, 3), -speed, speed);        // Slows down the motor and sets its max/min speed to the double "speed"
-            double linearSpeed = gamepad2RightY;
+            double linearSpeed = -gamepad2RightY;
             double spindleSpeed = gamepad2RTrigger - gamepad2LTrigger;
 
             topRight.setPower(topRightCorrectedSpeed);
