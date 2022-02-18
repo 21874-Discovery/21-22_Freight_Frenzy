@@ -54,10 +54,10 @@ public class FY21TeleOpTesting extends LinearOpMode {
             }
 
             if (gamepad2.x && !gamepad2.b) {
-                carouselSpeed = -1;
+                carouselSpeed = -0.75;
             }
             if (!gamepad2.x && gamepad2.b) {
-                carouselSpeed = -1;
+                carouselSpeed = 0.75;
             }
             if (!gamepad2.x && !gamepad2.b || gamepad2.x && gamepad2.b) {
                 carouselSpeed = 0;
@@ -70,7 +70,7 @@ public class FY21TeleOpTesting extends LinearOpMode {
             float gamepad2LTrigger = gamepad2.left_trigger;     // Sets the 2nd gamepads left trigger pushdown strength to a float
             float gamepad2RTrigger = gamepad2.right_trigger;     // Sets the 2nd gamepads left trigger pushdown strength to a float
 
-            // Mechanum formulas
+            // Mechenum formulas
             double TopRightSpeed = gamepad1LeftY + gamepad1LeftX + gamepad1RightX;     // Combines the inputs of the sticks to clip their output to a value between 1 and -1
             double TopLeftSpeed = -gamepad1LeftY + gamepad1LeftX + gamepad1RightX;     // Combines the inputs of the sticks to clip their output to a value between 1 and -1
             double BottomRightSpeed = gamepad1LeftY - gamepad1LeftX + gamepad1RightX;      // Combines the inputs of the sticks to clip their output to a value between 1 and -1
