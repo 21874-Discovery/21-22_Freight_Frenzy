@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name = "FY21Blue_3_Warehouse_Score_Duck_Warehouse", group = "team")
+@Autonomous(name = "FY21Red_3_Warehouse_Score_Duck_Warehouse", group = "team")
 
-public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
+public class FY21Red_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
     //define motors and stuff
     DcMotor topRight;
     DcMotor bottomRight;
@@ -63,7 +63,7 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
             }
 
             if (currentstep == 1) {
-                Mecanum_Turn("Right", 0.5, 750); // turn right at 50% for 400ms
+                Mecanum_Turn("Left", 0.5, 750); // turn right at 50% for 400ms
                 Mecanum_drive("Forward", 0.5, 700); // forward 50% for 740ms
                 linearSlide.setPower(0.5);
                 sleep(4500);
@@ -75,9 +75,9 @@ public class FY21Blue_3_Warehouse_Score_Duck_Warehouse extends LinearOpMode {
                 sleep(750);
                 linearSlide.setPower(0);
                 Mecanum_drive("Backward", 0.5, 800);
-                Mecanum_Turn("Left", 0.5, 725);
+                Mecanum_Turn("Right", 0.5, 725);
                 Mecanum_drive("Backward", 0.5, 1500);
-                carouselSpinner.setPower( -0.65);
+                carouselSpinner.setPower( 0.65);
                 sleep(5000);
                 carouselSpinner.setPower(0);
                 Mecanum_drive("Forward", 0.75, 2500);
