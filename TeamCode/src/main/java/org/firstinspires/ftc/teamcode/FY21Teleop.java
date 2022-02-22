@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name = "FY21TeleOp", group = "TeleOp")
@@ -14,6 +15,7 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor carouselSpinner;
     DcMotor linearSlide;
     DcMotor spindle;
+    Servo emergencyFlap;
 
     double speed = 1;
     double carouselSpeed = 0;
@@ -29,6 +31,7 @@ public class FY21Teleop extends LinearOpMode {
         linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
         spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
+        emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub undefined port
 
         waitForStart();
         while (opModeIsActive()) {
@@ -37,13 +40,14 @@ public class FY21Teleop extends LinearOpMode {
             telemetry.addLine("Left Joystick: Drive/Strafe");
             telemetry.addLine("Right Joystick: Turn");
             telemetry.addLine("Right Bumper: Slow Down (Reverts when released)");
+            telemetry.addLine("All 4 buttons: Emergency Pusher Toggle (3 second cooldown)");
             telemetry.addLine("Gamepad 2:");
             telemetry.addLine("Right Joystick: Linear Slide");
             telemetry.addLine("X-Button: Spin Carousel (Blue)");
             telemetry.addLine("B-Button: Spin Carousel (Red)");
             telemetry.addLine("Left Trigger: Take Freight (Spindle)");
             telemetry.addLine("Right Trigger: Drop Freight (Spindle)");
-            telemetry.addLine("Please note that Spindle controls will cancel each other out if held at the same time. They are also determined by force.");
+            telemetry.addLine("Please note that Spindle controls will cancel each other out if held at the same time. They, alongside the linear slide and drive controls, are also determined by force.");
             telemetry.update();
             if (gamepad1.right_bumper) { //when held, will slow the robot down for precise driving.
                 speed = 0.25;
