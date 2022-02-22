@@ -19,6 +19,7 @@ public class FY21Teleop extends LinearOpMode {
 
     double speed = 1;
     double carouselSpeed = 0;
+    double emergencyActive = 0;
 
 
     @Override
@@ -64,6 +65,20 @@ public class FY21Teleop extends LinearOpMode {
             }
             if (!gamepad2.x && !gamepad2.b || gamepad2.x && gamepad2.b) {
                 carouselSpeed = 0;
+            }
+
+            //EMERGENCY CASE ONLY
+            if (gamepad1.a && gamepad1.b && gamepad1.x && gamepad1.y) {
+                if (emergencyActive == 0) {
+                    emergencyFlap.setPosition(90);
+                    emergencyActive = 1;
+                    sleep (3000);
+                }
+                else {
+                    emergencyFlap.setPosition(0);
+                    emergencyActive = 0;
+                    sleep (3000);
+                }
             }
 
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
