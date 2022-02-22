@@ -18,8 +18,8 @@ public class FY21TeleOpTesting extends LinearOpMode {
     Servo emergencyFlap;
 
     double speed = 1;
-    double spindleSpeed = 0;
     double carouselSpeed = 0;
+    double emergencyActive = 0;
 
 
     @Override
@@ -67,6 +67,20 @@ public class FY21TeleOpTesting extends LinearOpMode {
                 carouselSpeed = 0;
             }
 
+            //EMERGENCY CASE ONLY
+            if (gamepad1.a && gamepad1.b && gamepad1.x && gamepad1.y) {
+                if (emergencyActive == 0) {
+                    emergencyFlap.setPosition(90);
+                    emergencyActive = 1;
+                    sleep (3000);
+                }
+                else {
+                    emergencyFlap.setPosition(0);
+                    emergencyActive = 0;
+                    sleep (3000);
+                }
+            }
+
             float gamepad1LeftY = -gamepad1.left_stick_x;        // Sets the gamepads left sticks y position to a float so that we can easily track the stick
             float gamepad1LeftX = gamepad1.left_stick_y;       // Sets the gamepads left sticks x position to a float so that we can easily track the stick
             float gamepad1RightX = gamepad1.right_stick_x;     // Sets the gamepads right sticks x position to a float so that we can easily track the stick
@@ -85,7 +99,7 @@ public class FY21TeleOpTesting extends LinearOpMode {
             double topRightCorrectedSpeed = Range.clip(Math.pow(TopLeftSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomLeftCorrectedSpeed = Range.clip(Math.pow(BottomRightSpeed, 3), -speed, speed);      // Slows down the motor and sets its max/min speed to the double "speed"
             double bottomRightCorrectedSpeed = Range.clip(Math.pow(BottomLeftSpeed, 3), -speed, speed);        // Slows down the motor and sets its max/min speed to the double "speed"
-            double linearSpeed = gamepad2RightY;
+            double linearSpeed = -gamepad2RightY;
             double spindleSpeed = gamepad2RTrigger - gamepad2LTrigger;
 
             topRight.setPower(topRightCorrectedSpeed);
