@@ -81,6 +81,28 @@ public class FY21AutonomousExperimenting extends LinearOpMode {
                 sleep(5000);
                 carouselSpinner.setPower(0);
                 Mecanum_drive("Forward", 0.75, 2500);
+
+
+
+
+
+
+
+                currentstep++;
+            }
+
+            if (currentstep == 2) {
+                currentstep++;
+            }
+
+            if (currentstep == 3) {
+                Mecanum_drive("Backward", 0.5, 800);
+                Mecanum_Turn("Right", 0.5, 725);
+                Mecanum_drive("Backward", 0.5, 1500);
+                carouselSpinner.setPower( 0.65);
+                sleep(5000);
+                carouselSpinner.setPower(0);
+                Mecanum_drive("Forward", 0.75, 2500);
                 currentstep++;
             }
         }
@@ -231,3 +253,4 @@ public class FY21AutonomousExperimenting extends LinearOpMode {
     }
 
 }
+//Turn, scan, put fret in correct spot, get duck, hope the the shipping element gose into the storege, end in the freat box.
