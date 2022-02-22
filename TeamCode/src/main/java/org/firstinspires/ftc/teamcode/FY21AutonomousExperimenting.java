@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @Autonomous(name = "FY21AutonomousTest", group = "team")
 
-public class FY21AutonomousExperiment extends LinearOpMode {
+public class FY21AutonomousExperimenting extends LinearOpMode {
     //define motors and stuff
     DcMotor topRight;
     DcMotor bottomRight;
