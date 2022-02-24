@@ -71,7 +71,7 @@ public class FY21Teleop extends LinearOpMode {
             //EMERGENCY CASE ONLY
             if (gamepad1.b) {
                 if (emergencyActive == 0) {
-                    emergencyFlap.setPosition(1);
+                    emergencyFlap.setPosition(2);
                     emergencyActive = 1;
                     sleep (3000);
                 }
