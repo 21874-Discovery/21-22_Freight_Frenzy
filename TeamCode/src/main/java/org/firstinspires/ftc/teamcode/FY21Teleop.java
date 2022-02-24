@@ -32,7 +32,7 @@ public class FY21Teleop extends LinearOpMode {
         linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
         spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
-        emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub undefined port
+        emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub servo port 0
 
         waitForStart();
         while (opModeIsActive()) {
