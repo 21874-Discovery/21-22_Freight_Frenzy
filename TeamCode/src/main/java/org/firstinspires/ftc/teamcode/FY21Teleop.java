@@ -35,7 +35,7 @@ public class FY21Teleop extends LinearOpMode {
         emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub servo port 0
 
 
-        emergencyFlap.setPosition(1);
+        emergencyFlap.setPosition(0);
         waitForStart();
         while (opModeIsActive()) {
             telemetry.addLine("Tele-Op Controls:");
