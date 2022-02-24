@@ -36,6 +36,7 @@ public class FY21Teleop extends LinearOpMode {
 
 
         emergencyFlap.setPosition(0);
+
         waitForStart();
         while (opModeIsActive()) {
             telemetry.addLine("Tele-Op Controls:");
@@ -72,7 +73,7 @@ public class FY21Teleop extends LinearOpMode {
             //EMERGENCY CASE ONLY
             if (gamepad1.b) {
                 if (emergencyActive == 0) {
-                    emergencyFlap.setPosition(2);
+                    emergencyFlap.setPosition(.5);
                     emergencyActive = 1;
                     sleep (3000);
                 }
