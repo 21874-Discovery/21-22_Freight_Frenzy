@@ -33,8 +33,9 @@ public class FY21Teleop extends LinearOpMode {
         spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
         emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub servo port 0
-         emergencyFlap.setPosition(5);
 
+
+        emergencyFlap.setPosition(1);
         waitForStart();
         while (opModeIsActive()) {
             telemetry.addLine("Tele-Op Controls:");
