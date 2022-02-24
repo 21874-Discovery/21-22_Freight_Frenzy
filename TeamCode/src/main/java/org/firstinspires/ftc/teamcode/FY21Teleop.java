@@ -3,8 +3,9 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
+//import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 @TeleOp(name = "FY21TeleOp", group = "TeleOp")
 public class FY21Teleop extends LinearOpMode {
@@ -15,7 +16,7 @@ public class FY21Teleop extends LinearOpMode {
     DcMotor carouselSpinner;
     DcMotor linearSlide;
     DcMotor spindle;
-    Servo emergencyFlap;
+    CRServo emergencyFlap;
 
     double speed = 1;
     double carouselSpeed = 0;
@@ -32,7 +33,8 @@ public class FY21Teleop extends LinearOpMode {
         linearSlide = hardwareMap.dcMotor.get("LS"); //expansion hub port 0
         spindle = hardwareMap.dcMotor.get("SM"); //expansion hub port 1
         carouselSpinner = hardwareMap.dcMotor.get("CS"); //expansion hub port 2
-        emergencyFlap = hardwareMap.servo.get("EF"); //expansion hub servo port 0
+        emergencyFlap = hardwareMap.crservo.get("EF"); //expansion hub servo port 0
+        emergencyFlap.setPower(0.0);
 
         waitForStart();
         while (opModeIsActive()) {
@@ -70,14 +72,14 @@ public class FY21Teleop extends LinearOpMode {
             //EMERGENCY CASE ONLY
             if (gamepad1.b) {
                 if (emergencyActive == 0) {
-                    emergencyFlap.setPosition(90);
+                    emergencyFlap.setPower(.5);
                     emergencyActive = 1;
-                    sleep (3000);
+                    sleep (500);
                 }
                 else {
-                    emergencyFlap.setPosition(0);
+                    emergencyFlap.setPower(0);
                     emergencyActive = 0;
-                    sleep (3000);
+                    sleep (500);
                 }
             }
 
